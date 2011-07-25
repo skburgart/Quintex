@@ -1,27 +1,81 @@
-/*
-    Document   : main
-    Created on : Jul 25, 2011, 7:00:08 PM
-    Author     : steve
+/* 
+    Document   : style
+    Created on : Jul 13, 2011, 9:42:55 PM
+    Author     : Steven Burgart
 */
 
-* {
-    padding: 0;
-    margin: 0;
-}
-
-root {
+root { 
     display: block;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background: #fff url(../img/bg.png) repeat-x;
-    font-family: 'PT Sans', sans-serif;
+    background: lightgrey;
+    font-family: 'Muli', sans-serif;
 }
 
 #header {
-    height: 50px;
-    margin-top: 20px;
-    background: white;
-    border-top: 1px solid lightgrey;
-    border-bottom: 1px solid grey;
+    color: dodgerblue;
+    background: #111;
+    border-bottom: 3px solid cornflowerblue;
+}
+
+#header h1 {
+    padding: 0px 25px;
+    font-family: 'Bowlby One SC', sans-serif;
+    font-weight: normal;
+}
+
+#header ul {
+    padding-left: 30px;
+}
+
+#header ul li {
+    font-size: 0.8em;
+    font-weight: bold;
+    background: #93CCEA; 
+    display: inline;
+    border: 2px solid cornflowerblue;
+    padding: 1px 15px;
+    margin-right: 10px;
+}
+
+#header ul li:hover {
+    color: white;
+    background: cornflowerblue;
+    cursor: pointer;
+}
+
+#main {
+    margin: 10px 10px 0;
+    padding: 10px;
+    border: 1px solid grey;
+    background: #EEE;
+}
+
+#main p {
+    text-indent: 20px;
+    padding: 5px 10px;
+}
+
+#footer {
+    color: dodgerblue;
+    font-size: 0.7em;
+    float: right;
+    margin-top: 5px;
+    padding-right: 10px;
+}
+
+#footer a {
+    color: dodgerblue;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    color: #3EB0FF;
 }
