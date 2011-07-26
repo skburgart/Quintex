@@ -13,6 +13,11 @@ root {
     padding: 0;
 }
 
+#submit {
+    padding: 8px;
+    font-size: 1.1em;
+}
+
 body {
     background: lightgrey;
     font-family: 'Muli', sans-serif;
@@ -56,11 +61,17 @@ a {
     color: dodgerblue;
 }
 
-#content {
+#content, #content-center {
     margin: 10px 10px 0;
     padding: 10px;
     border: 1px solid grey;
     background: #EEE;
+}
+
+#content-center {
+    width: 522px;
+    margin: 10px auto;
+    text-align: center;
 }
 
 #content p {
@@ -69,6 +80,7 @@ a {
 }
 
 #footer {
+    clear: both;
     color: dodgerblue;
     font-size: 0.7em;
     float: right;
@@ -83,4 +95,17 @@ a {
 
 #footer a:hover {
     color: #3EB0FF;
+}
+
+#register-table {
+    margin: auto;
+    border-spacing: 10px;
+}
+
+#register-table td.left{
+    text-align: right;
+    padding-right: 10px;
+}
+
+#register-table #submit {
 }

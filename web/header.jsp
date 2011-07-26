@@ -8,7 +8,6 @@
     <h1>Dynamic Website</h1>
     <ul>
         <li><a href="index.jsp">Home</a></li>
-        <li><a href="#">About</a></li>
         <li>
             <a href="javascript:showLogin()">Login</a>
             <span id="login">
@@ -19,7 +18,7 @@
                     <p>Password</p>
                     <p><input type="password" id="password" name="password" class="text"/></p>
                     <p style="float:left">
-                        <a href="#">Register</a><br />
+                        <a href="register.jsp">Register</a><br />
                         <a href="#">Forgot Password</a>
                     </p>
                     <input style="float: right" type="submit" id="submit" value="Login" />

@@ -29,11 +29,6 @@
     font-size: 1.2em;
 }
 
-#login input#submit {
-    padding: 8px;
-    font-size: 1.1em;
-}
-
 #login-msg {
     display: none;
     color: black;
