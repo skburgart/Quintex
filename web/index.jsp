@@ -6,24 +6,39 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Nightly</title>
+        <title>Dynamic</title>
         <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
         <link rel='stylesheet' type='text/css' href='css/main.css'>
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Bowlby+One+SC'>
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Muli'>
+        <script src="js/jquery-1.6.2.min.js"></script>
+        <script src="js/login-box.js"></script>
     </head>
     <body>
         <div id='header'>
-            <h1>Nightly Design Template</h1>
+            <h1>Dynamic Website</h1>
             <ul>
                 <li>Home</li>
                 <li>About</li>
-                <li>Link 3</li>
-                <li>Link 4</li>
-                <li>Link 5</li>
+                <li>
+                    <a href="javascript:showLogin()">Login</a>
+                    <span id="login">
+                        <form>
+                            <p>Username</p>
+                            <p><input type="text" class="text"/></p>
+                            <p>Password</p>
+                            <p><input type="text" class="text"/></p>
+                            <p style="float:left">
+                                <a href="#">Register</a><br />
+                                <a href="#">Forgot Password</a>
+                            </p>
+                            <input style="float: right" type="submit" id="submit" value="Login" />
+                        </form>
+                    </span>
+                </li>
             </ul>
         </div>
-        <div id='main'>
+        <div id='content'>
             <h2>Welcome!</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

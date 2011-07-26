@@ -1,10 +1,10 @@
-/* 
+/*
     Document   : style
     Created on : Jul 13, 2011, 9:42:55 PM
     Author     : Steven Burgart
 */
 
-root { 
+root {
     display: block;
 }
 
@@ -37,8 +37,9 @@ body {
 #header ul li {
     font-size: 0.8em;
     font-weight: bold;
-    background: #93CCEA; 
+    background: #93CCEA;
     display: inline;
+    position: relative;
     border: 2px solid cornflowerblue;
     padding: 1px 15px;
     margin-right: 10px;
@@ -50,14 +51,44 @@ body {
     cursor: pointer;
 }
 
-#main {
+#login {
+    width: 250px;
+    display: none;
+    padding: 15px;
+    background: #93CCEA;
+    border: 3px solid cornflowerblue;
+    border-radius: 0 0 15px 15px;
+    position: absolute;
+    top: 18px;
+    left: -2px;
+    font-size: 1.2em;
+}
+
+#login a {
+    text-decoration: none;
+}
+
+#login input.text {
+    margin-left: 2px;
+    margin-bottom: 10px;
+    border: 1px solid cornflowerblue;
+    height: 20px;
+    width: 100%;
+}
+
+#login input#submit {
+    font-weight: bold;
+    padding: 10px;
+}
+
+#content {
     margin: 10px 10px 0;
     padding: 10px;
     border: 1px solid grey;
     background: #EEE;
 }
 
-#main p {
+#content p {
     text-indent: 20px;
     padding: 5px 10px;
 }
