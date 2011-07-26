@@ -1,21 +1,18 @@
 function login() {
     var username = $('input[name=username]');
     var password = $('input[name=password]');
-
     var data = 'username=' + username.val() + '&password=' + password.val();
 
-    $('.text').attr('disabled','true');
-
-    $.ajax({
-        url: "login",
-        type: "GET",
-        data: data,
-        cache: false,
-        dataType: "xml",
-        success: parseLogin
-    });
-
-    return false;
+    if (!username.val()) {
+        loginMessage("Enter username");
+        username.focus();
+    } else if (!password.val()) {
+        loginMessage("Enter password");
+        password.focus();
+    } else {
+        $('.text').attr('disabled', 'true');
+        ajaxRequest("login", data, parseLogin)
+    }
 }
 
 function parseLogin (xmlResponse) {
