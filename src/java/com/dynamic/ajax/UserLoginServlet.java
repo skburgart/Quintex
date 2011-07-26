@@ -15,6 +15,11 @@ public class UserLoginServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Utility.log("Login Servlet");
+
+        response.setContentType("text/xml");
+        response.setHeader("Cache-Control", "no-cache");
+        response.getWriter().write("<response>0</response>");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
