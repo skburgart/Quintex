@@ -5,11 +5,8 @@
 */
 
 function showLogin() {
-    $('#login').slideToggle('fast');
-}
+    $('#login').slideToggle('fast', function() {
+        $('#username').focus()
+    });
 
-jQuery(document).mouseup(function(event) {
-    if(event.target.id != 'login') {
-        $("#login").slideUp('fast');
-    }
-});
+}

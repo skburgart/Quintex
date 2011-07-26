@@ -23,11 +23,11 @@
                 <li>
                     <a href="javascript:showLogin()">Login</a>
                     <span id="login">
-                        <form>
+                        <form action="login" method="post">
                             <p>Username</p>
-                            <p><input type="text" class="text"/></p>
+                            <p><input type="text" id="username" class="text"/></p>
                             <p>Password</p>
-                            <p><input type="text" class="text"/></p>
+                            <p><input type="text" id="password" class="text"/></p>
                             <p style="float:left">
                                 <a href="#">Register</a><br />
                                 <a href="#">Forgot Password</a>
