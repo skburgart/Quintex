@@ -9,19 +9,21 @@
         <title>Dynamic</title>
         <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
         <link rel='stylesheet' type='text/css' href='css/main.css'>
+        <link rel='stylesheet' type='text/css' href='css/login.css'>
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Bowlby+One+SC'>
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Muli'>
         <script src="js/jquery-1.6.2.min.js"></script>
         <script src="js/jquery-ui-1.8.14.custom.min.js"></script>
         <script src="js/login-box.js"></script>
+        <script src="js/ajax/ajax.js"></script>
         <script src="js/ajax/login.js"></script>
     </head>
     <body>
         <div id='header'>
             <h1>Dynamic Website</h1>
             <ul>
-                <li>Home</li>
-                <li>About</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
                 <li>
                     <a href="javascript:showLogin()">Login</a>
                     <span id="login">
@@ -30,7 +32,7 @@
                             <p>Username</p>
                             <p><input type="text" id="username" name="username" class="text"/></p>
                             <p>Password</p>
-                            <p><input type="text" id="password" password="password" class="text"/></p>
+                            <p><input type="password" id="password" name="password" class="text"/></p>
                             <p style="float:left">
                                 <a href="#">Register</a><br />
                                 <a href="#">Forgot Password</a>

@@ -1,0 +1,44 @@
+/*
+    Document   : login
+    Created on : Jul 25, 2011, 10:42:50 PM
+    Author     : steve
+*/
+
+#login {
+    width: 250px;
+    display: none;
+    padding: 15px;
+    background: #93CCEA;
+    border: 3px solid cornflowerblue;
+    border-radius: 0 0 15px 15px;
+    position: absolute;
+    top: 21px;
+    left: -2px;
+}
+
+#login a {
+    color: darkblue;
+}
+
+#login input.text {
+    margin-bottom: 10px;
+    border: 1px solid cornflowerblue;
+    height: 25px;
+    width: 100%;
+    text-indent: 5px;
+    font-size: 1.2em;
+}
+
+#login input#submit {
+    padding: 8px;
+    font-size: 1.1em;
+}
+
+#login-msg {
+    display: none;
+    color: black;
+    background: pink;
+    border: 2px solid darkred;
+    padding: 5px;
+    margin-bottom: 10px;
+}
