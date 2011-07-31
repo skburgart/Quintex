@@ -10,7 +10,7 @@
         <jsp:include page="/common-headers.jsp"/>
     </head>
     <body>
-        <jsp:include page="/header.jsp"/>
+        <jsp:include page="header.jsp"/>
         <div id='content'>
             <h2>Logged-in Secion</h2>
             <p>Welcome!</p>

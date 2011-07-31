@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  * @author steve
  */
 @WebFilter(filterName = "UserAuthFilter", urlPatterns = {"/user/*"})
-public class UserAuthFilter implements Filter {
+public class UserAuth implements Filter {
 
     private static final boolean debug = true;
     // The filter configuration object we are associated with.  If
@@ -33,7 +33,7 @@ public class UserAuthFilter implements Filter {
     // configured.
     private FilterConfig filterConfig = null;
 
-    public UserAuthFilter() {
+    public UserAuth() {
     }
 
     public void doFilter(ServletRequest request, ServletResponse response,

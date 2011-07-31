@@ -1,46 +1,28 @@
 package com.dynamic.ajax;
 
 import com.dynamic.helpers.Utility;
-import com.dynamic.objects.UserDBO;
-import com.dynamic.objects.UserVO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author steve
  */
-@WebServlet(name = "UserLoginServlet", urlPatterns = {"/login"})
-public class UserLoginServlet extends HttpServlet {
+@WebServlet(name = "UserRegisterServlet", urlPatterns = {"/register"})
+public class Register extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(true);
-        Utility.log("Login Servlet");
-
-        int result = 0;
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        UserDBO udbo = new UserDBO();
-
-        if (udbo.validate(username, password)) {
-            UserVO user = udbo.getFromUsername(username);
-            session.setAttribute("username", user.username);
-            result = 1;
-        }
+        Utility.log("Register Servlet");
 
         response.setContentType("text/xml");
         response.setHeader("Cache-Control", "no-cache");
-        response.getWriter().write("<loginResponse>" + Integer.toString(result) + "</loginResponse>");
-
+        response.getWriter().write("<response>0</response>");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
