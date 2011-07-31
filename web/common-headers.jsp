@@ -5,8 +5,8 @@
 --%>
 
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
-<link rel='stylesheet' type='text/css' href='css/main.css'>
-<link rel='stylesheet' type='text/css' href='css/login.css'>
+<link rel='stylesheet' type='text/css' href='/Dynamic/css/main.css'>
+<link rel='stylesheet' type='text/css' href='/Dynamic/css/login.css'>
 <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Bowlby+One+SC'>
 <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Muli'>
 <script src="js/jquery-1.6.2.min.js"></script>
