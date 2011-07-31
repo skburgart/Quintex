@@ -1,5 +1,6 @@
 package com.dynamic.objects;
 
+import com.dynamic.helpers.SHA;
 import com.dynamic.helpers.Utility;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ public class UserDBO extends DatabaseObject {
             stmt = prepare("INSERT INTO user(username, password, registered) VALUES (?, ?, NOW())");
 
             stmt.setString(1, user.username);
-            stmt.setString(2, user.password);
+            stmt.setString(2, SHA.getSHAOne(user.password));
 
             stmt.executeUpdate();
         } catch (SQLException exp) {
@@ -60,6 +61,43 @@ public class UserDBO extends DatabaseObject {
         return users.get(0);
     }
 
+    public UserVO getFromUsername(String username) {
+
+        ArrayList<UserVO> users = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = prepare("SELECT * FROM user WHERE username=?");
+            stmt.setString(1, username);
+            rs = stmt.executeQuery();
+        } catch (SQLException exp) {
+            Utility.logError(exp);
+        }
+
+        users = parseResultSet(rs);
+
+        if (users.isEmpty()) {
+            return null;
+        } else {
+            return users.get(0);
+        }
+    }
+
+    public boolean validate(String username, String password) {
+        boolean isValid = false;
+
+        UserVO user = getFromUsername(username);
+
+        if (user != null) {
+            if (SHA.getSHAOne(password).equals(user.password)) {
+                isValid = true;
+            }
+        }
+
+        return isValid;
+    }
+
     private ArrayList<UserVO> parseResultSet(ResultSet rs) {
         ArrayList<UserVO> users = new ArrayList<UserVO>();
 
@@ -85,8 +123,8 @@ public class UserDBO extends DatabaseObject {
         UserDBO udbo = new UserDBO();
         UserVO user = new UserVO();
 
-        user.username = "Bob";
-        user.password = "secret!";
+        user.username = "Sally";
+        user.password = SHA.getSHAOne("123");
 
         udbo.add(user);
     }

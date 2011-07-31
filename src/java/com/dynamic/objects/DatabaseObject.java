@@ -13,13 +13,14 @@ import java.sql.SQLException;
 public abstract class DatabaseObject {
 
     private Connection conn = null;
-    
+
     private static String dbUrl = "jdbc:mysql://localhost/dynamic";
     private static String dbUser = "dynamic";
     private static String dbPassword = "dynamic123";
 
     public DatabaseObject() {
         try {
+			Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         } catch (Exception exp) {
             Utility.logError(exp);

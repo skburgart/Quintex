@@ -1,7 +1,6 @@
 package com.dynamic.ajax;
 
 import com.dynamic.helpers.Utility;
-import com.dynamic.objects.UserDBO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,29 +12,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author steve
  */
-@WebServlet(name = "UserLoginServlet", urlPatterns = {"/login"})
-public class UserLoginServlet extends HttpServlet {
+@WebServlet(name = "UserRegisterServlet", urlPatterns = {"/register"})
+public class UserRegisterServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Utility.log("Login Servlet");
-
-        int result = 0;
-        
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        UserDBO udbo = new UserDBO();
-
-        if (udbo.validate(username, password)) {
-            result = 1;
-        }
+        Utility.log("Register Servlet");
 
         response.setContentType("text/xml");
         response.setHeader("Cache-Control", "no-cache");
-        response.getWriter().write("<loginResponse>" + Integer.toString(result) + "</loginResponse>");
-
+        response.getWriter().write("<response>0</response>");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

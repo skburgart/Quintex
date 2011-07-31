@@ -1,32 +1,42 @@
 function login() {
-    var username = $('input[name=username]');
-    var password = $('input[name=password]');
-    var data = 'username=' + username.val() + '&password=' + password.val();
+    var url = "login";
+    var data = {
+        "username": $('input[name=username]').val(),
+        "password": $('input[name=password]').val()
+    }
 
-    if (!username.val()) {
-        loginMessage("Enter username");
-        username.focus();
-    } else if (!password.val()) {
-        loginMessage("Enter password");
-        password.focus();
-    } else {
-        $('.text').attr('disabled', 'true');
-        ajaxRequest("login", data, parseLogin)
+    if (validateLogin(data)) {
+        ajaxRequest(url, data, parseLogin)
     }
 }
 
-function parseLogin (xmlResponse) {
-    var response = $(xmlResponse).find("response").text();
+function validateLogin(data) {
+    var valid = false;
 
+    if (!data.username) {
+        loginMessage("Enter username");
+        $("username").focus();
+    } else if (!data.password) {
+        loginMessage("Enter password");
+        $("password").focus();
+    } else {
+        valid = true;
+    }
+
+    return valid;
+}
+
+function parseLogin (xmlResponse) {
+    var response = $(xmlResponse).find("loginResponse").text();
 
     $('.text').removeAttr('disabled');
 
-    if(response == 0) {
-        loginMessage("Username doesn't exist");
-        $("#username").focus();
-    } else if (response == 1) {
-        loginMessage("Password incorrect");
-        $("#password").focus();
+    if (response == 1) {
+        loginMessage("Success! Redirecting...");
+    } else {
+        loginMessage("Login failed");
+        $("#username").val("").focus();
+        $("#password").val("");
     }
 
 }
