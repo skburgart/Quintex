@@ -1,4 +1,4 @@
-package com.dynamic.objects;
+package com.quintex.objects;
 
 import java.sql.Timestamp;
 

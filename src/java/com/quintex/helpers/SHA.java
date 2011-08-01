@@ -6,7 +6,7 @@
  * 2011
  * Player
  */
-package com.dynamic.helpers;
+package com.quintex.helpers;
 
 import java.security.MessageDigest;
 import java.util.Formatter;

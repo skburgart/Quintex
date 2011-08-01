@@ -5,7 +5,7 @@
 --%>
 
 <div id='header'>
-    <h1>Dynamic Website</h1>
+    <h1>Quintex</h1>
     <ul>
         <li><a href="index.jsp">Home</a></li>
         <li>

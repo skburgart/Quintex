@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dynamic.filters;
+package com.quintex.filters;
 
-import com.dynamic.helpers.Logger;
+import com.quintex.helpers.Logger;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -48,7 +48,7 @@ public class UserAuth implements Filter {
         HttpSession session = httpReq.getSession(true);
 
         if (session.getAttribute("username") == null) {
-            ((HttpServletResponse) response).sendRedirect("/Dynamic/index.jsp?notloggedin");
+            ((HttpServletResponse) response).sendRedirect("/Quintex/index.jsp?notloggedin");
             return;
         }
 

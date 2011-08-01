@@ -8,7 +8,7 @@
 <!--TODO: register jsp-->
 <html>
     <head>
-        <title>Dynamic</title>
+        <title>Quintex</title>
         <jsp:include page="common-headers.jsp"/>
         <script src="js/ajax/register.js"></script>
     </head>

@@ -1,8 +1,8 @@
-package com.dynamic.ajax;
+package com.quintex.ajax;
 
-import com.dynamic.helpers.Logger;
-import com.dynamic.objects.UserDBO;
-import com.dynamic.objects.UserVO;
+import com.quintex.helpers.Logger;
+import com.quintex.objects.UserDBO;
+import com.quintex.objects.UserVO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Dynamic</title>
+        <title>Quintex</title>
         <jsp:include page="/common-headers.jsp"/>
     </head>
     <body>

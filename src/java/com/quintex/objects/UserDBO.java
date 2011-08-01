@@ -1,7 +1,7 @@
-package com.dynamic.objects;
+package com.quintex.objects;
 
-import com.dynamic.helpers.SHA;
-import com.dynamic.helpers.Logger;
+import com.quintex.helpers.SHA;
+import com.quintex.helpers.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

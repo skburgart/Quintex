@@ -1,9 +1,7 @@
-package com.dynamic.ajax;
+package com.quintex.servlets;
 
-import com.dynamic.helpers.Logger;
-import com.dynamic.objects.UserDBO;
-import com.dynamic.objects.UserVO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,31 +13,15 @@ import javax.servlet.http.HttpSession;
  *
  * @author steve
  */
-@WebServlet(name = "UserLoginServlet", urlPatterns = {"/login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "Logout", urlPatterns = {"/user/logout"})
+public class Logout extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(true);
-        Logger.log("Login Servlet");
-
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        UserDBO udbo = new UserDBO();
-
-        int result = udbo.validate(username, password);
-        if (result == 1) {
-            UserVO user = udbo.getFromUsername(username);
-            session.setAttribute("username", user.username);
-        }
-
-        response.setContentType("text/xml");
-        response.setHeader("Cache-Control", "no-cache");
-        response.getWriter().write("<loginResponse>" + Integer.toString(result) + "</loginResponse>");
-
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("/Quintex");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,10 +1,10 @@
-package com.dynamic.objects;
+package com.quintex.objects;
 
 /**
  *
  * @author steve
  */
-import com.dynamic.helpers.Logger;
+import com.quintex.helpers.Logger;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,9 +14,9 @@ public abstract class DatabaseObject {
 
     private Connection conn = null;
 
-    private static String dbUrl = "jdbc:mysql://localhost/dynamic";
-    private static String dbUser = "dynamic";
-    private static String dbPassword = "dynamic123";
+    private static String dbUrl = "jdbc:mysql://localhost/quintex";
+    private static String dbUser = "quintex";
+    private static String dbPassword = "quintex123";
 
     public DatabaseObject() {
         try {

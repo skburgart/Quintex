@@ -1,7 +1,7 @@
 /**
  * @author steve
  */
-package com.dynamic.helpers;
+package com.quintex.helpers;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
