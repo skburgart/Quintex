@@ -15,7 +15,7 @@
     <body>
         <jsp:include page="header.jsp"/>
         <div id='content-center'>
-            <div id="register-msg"></div>
+            <div class="msg-error" id="register-msg"></div>
             <h2>Registration</h2>
             <form action="javascript:register()">
                 <table id="register-table">
@@ -32,7 +32,7 @@
                         <td><input type="password" name="register-password2" class="register-input" /></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" id="submit"/></td>
+                        <td colspan="2"><input type="submit" class="submit register-input"/></td>
                     </tr>
                 </table>
             </form>

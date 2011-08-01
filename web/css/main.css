@@ -13,7 +13,7 @@ root {
     padding: 0;
 }
 
-#submit {
+input.submit {
     padding: 8px;
     font-size: 1.1em;
 }

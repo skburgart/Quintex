@@ -1,0 +1,15 @@
+/*
+    Document   : messages
+    Created on : Jul 31, 2011, 9:17:37 PM
+    Author     : steve
+*/
+
+div.msg-error {
+    display: none;
+    color: black;
+    background: pink;
+    border: 2px solid darkred;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}

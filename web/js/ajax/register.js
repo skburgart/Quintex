@@ -44,7 +44,6 @@ function validateRegistration(data) {
 function parseRegistration (xmlResponse) {
     var response = $(xmlResponse).find("registerResponse").text();
 
-
     if (response == 1) {
         registerMessage("Success! You may now log in");
     } else {

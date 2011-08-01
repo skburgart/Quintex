@@ -6,7 +6,7 @@ function login() {
     }
 
     if (validateLogin(data)) {
-        $('.text').attr("disabled", "true");
+        $('.login-input').attr("disabled", "true");
         ajaxRequest(url, data, parseLogin)
     }
 }
@@ -30,11 +30,10 @@ function validateLogin(data) {
 function parseLogin (xmlResponse) {
     var response = $(xmlResponse).find("loginResponse").text();
 
-    $('.text').removeAttr('disabled');
-
     if (response == 1) {
         window.location = "user/";
     } else {
+        $('.login-input').removeAttr('disabled');
         loginMessage("Login failed");
         $("input[name=login-username]").val("").focus();
         $("input[name=login-password]").val("");
