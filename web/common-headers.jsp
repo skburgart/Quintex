@@ -9,8 +9,8 @@
 <link rel='stylesheet' type='text/css' href='/Dynamic/css/login.css'>
 <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Bowlby+One+SC'>
 <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Muli'>
-<script src="js/jquery-1.6.2.min.js"></script>
-<script src="js/jquery-ui-1.8.14.custom.min.js"></script>
-<script src="js/login-box.js"></script>
-<script src="js/ajax/ajax.js"></script>
-<script src="js/ajax/login.js"></script>
+<script src="/Dynamic/js/jquery-1.6.2.min.js"></script>
+<script src="/Dynamic/js/jquery-ui-1.8.14.custom.min.js"></script>
+<script src="/Dynamic/js/login-box.js"></script>
+<script src="/Dynamic/js/ajax/ajax.js"></script>
+<script src="/Dynamic/js/ajax/login.js"></script>

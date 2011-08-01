@@ -6,7 +6,7 @@
 
 function showLogin() {
     $('#login').slideToggle('fast', function() {
-        $('#username').focus()
+        $('input[name=login-username]').focus()
     });
 
 }

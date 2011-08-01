@@ -3,8 +3,8 @@
 function register() {
     var url = "register";
     var data = {
-        "username": $('input[name=username]').val(),
-        "password": $('input[name=password]').val()
+        "username": $('input[name=login-username]').val(),
+        "password": $('input[name=login-password]').val()
     }
 
     if (validateLogin(data)) {

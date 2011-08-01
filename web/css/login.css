@@ -20,7 +20,7 @@
     color: darkblue;
 }
 
-#login input.text {
+#login input.login {
     margin-bottom: 10px;
     border: 1px solid cornflowerblue;
     height: 25px;

@@ -1,8 +1,8 @@
 function login() {
     var url = "login";
     var data = {
-        "username": $('input[name=username]').val(),
-        "password": $('input[name=password]').val()
+        "username": $('input[name=login-username]').val(),
+        "password": $('input[name=login-password]').val()
     }
 
     if (validateLogin(data)) {
@@ -16,10 +16,10 @@ function validateLogin(data) {
 
     if (!data.username) {
         loginMessage("Enter username");
-        $("username").focus();
+        $('input[name=login-username]').focus();
     } else if (!data.password) {
         loginMessage("Enter password");
-        $("password").focus();
+        $('input[name=login-password]').focus();
     } else {
         valid = true;
     }
@@ -37,8 +37,8 @@ function parseLogin (xmlResponse) {
         window.location = "user/";
     } else {
         loginMessage("Login failed");
-        $("#username").val("").focus();
-        $("#password").val("");
+        $("input[name=login-username]").val("").focus();
+        $("input[name=login-password]").val("");
     }
 
 }

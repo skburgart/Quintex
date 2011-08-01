@@ -14,9 +14,9 @@
                 <form action="javascript:login()">
                     <div id="login-msg">Hello</div>
                     <p>Username</p>
-                    <p><input type="text" id="username" name="username" class="text"/></p>
+                    <p><input type="text" name="login-username" class="login"/></p>
                     <p>Password</p>
-                    <p><input type="password" id="password" name="password" class="text"/></p>
+                    <p><input type="password" name="login-password" class="login"/></p>
                     <p style="float:left">
                         <a href="register.jsp">Register</a><br />
                         <a href="#">Forgot Password</a>
