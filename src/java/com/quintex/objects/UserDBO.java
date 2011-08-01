@@ -128,10 +128,6 @@ public class UserDBO extends DatabaseObject {
     private String getFlags(int userid) {
         UserVO user = get(userid);
 
-        if (user.flags == null) {
-            return "";
-        }
-
         return user.flags;
     }
 

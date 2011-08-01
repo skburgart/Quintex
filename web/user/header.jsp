@@ -8,6 +8,9 @@
     <h1>Quintex</h1>
     <ul>
         <li><a href="index.jsp">Home</a></li>
+        <% if (((String) session.getAttribute("flags")).contains("a")) {%>
+        <li><a href="admin.jsp">Admin</a></li>
+        <%}%>
         <li><a href="logout">Logout</a></li>
     </ul>
 </div>

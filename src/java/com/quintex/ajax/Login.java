@@ -36,6 +36,7 @@ public class Login extends HttpServlet {
             udbo.logLogin(user.userid, request.getRemoteAddr());
             session.setAttribute("userid", user.userid);
             session.setAttribute("username", user.username);
+            session.setAttribute("flags", user.flags);
         }
 
         response.setContentType("text/xml");
