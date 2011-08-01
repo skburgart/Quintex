@@ -19,7 +19,7 @@ public class SHA {
         try {
             md = MessageDigest.getInstance("SHA-1");
         } catch (Exception exp) {
-            Utility.logError(exp);
+            Logger.logError(exp);
         }
 
         return byteToBase16(md.digest(toEncode.getBytes()));
@@ -31,7 +31,7 @@ public class SHA {
         try {
             md = MessageDigest.getInstance("SHA-256");
         } catch (Exception exp) {
-            Utility.logError(exp);
+            Logger.logError(exp);
         }
 
         return byteToBase16(md.digest(toEncode.getBytes()));
@@ -44,5 +44,5 @@ public class SHA {
         }
         return formatter.toString();
     }
-    
+
 }

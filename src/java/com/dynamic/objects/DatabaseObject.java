@@ -4,7 +4,7 @@ package com.dynamic.objects;
  *
  * @author steve
  */
-import com.dynamic.helpers.Utility;
+import com.dynamic.helpers.Logger;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +23,7 @@ public abstract class DatabaseObject {
 			Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         } catch (Exception exp) {
-            Utility.logError(exp);
+            Logger.logError(exp);
         }
 
     }

@@ -4,7 +4,7 @@
  */
 package com.dynamic.filters;
 
-import com.dynamic.helpers.Utility;
+import com.dynamic.helpers.Logger;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -43,8 +43,6 @@ public class UserAuth implements Filter {
         if (debug) {
             log("UserAuthFilter:doFilter()");
         }
-
-        Utility.log("Userauth Filter");
 
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpSession session = httpReq.getSession(true);

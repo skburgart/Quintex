@@ -6,7 +6,7 @@ package com.dynamic.helpers;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Utility {
+public class Logger {
 
     public static void log(String message) {
         boolean debugging = true;

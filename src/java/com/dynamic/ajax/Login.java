@@ -1,6 +1,6 @@
 package com.dynamic.ajax;
 
-import com.dynamic.helpers.Utility;
+import com.dynamic.helpers.Logger;
 import com.dynamic.objects.UserDBO;
 import com.dynamic.objects.UserVO;
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(true);
-        Utility.log("Login Servlet");
+        Logger.log("Login Servlet");
 
         int result = 0;
 

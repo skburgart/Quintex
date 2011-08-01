@@ -1,6 +1,6 @@
 package com.dynamic.ajax;
 
-import com.dynamic.helpers.Utility;
+import com.dynamic.helpers.Logger;
 import com.dynamic.objects.UserDBO;
 import com.dynamic.objects.UserVO;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
 
 
-        Utility.log("Register Servlet");
+        Logger.log("Register Servlet");
 
         int result = 0;
 

@@ -1,7 +1,7 @@
 package com.dynamic.objects;
 
 import com.dynamic.helpers.SHA;
-import com.dynamic.helpers.Utility;
+import com.dynamic.helpers.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,7 +33,7 @@ public class UserDBO extends DatabaseObject {
 
                 result = stmt.executeUpdate();
             } catch (SQLException exp) {
-                Utility.logError(exp);
+                Logger.logError(exp);
             }
         } else {
             result = 2;
@@ -53,7 +53,7 @@ public class UserDBO extends DatabaseObject {
             stmt.setInt(1, userid);
             rs = stmt.executeQuery();
         } catch (SQLException exp) {
-            Utility.logError(exp);
+            Logger.logError(exp);
         }
 
         users = parseResultSet(rs);
@@ -76,7 +76,7 @@ public class UserDBO extends DatabaseObject {
             stmt.setString(1, username);
             rs = stmt.executeQuery();
         } catch (SQLException exp) {
-            Utility.logError(exp);
+            Logger.logError(exp);
         }
 
         users = parseResultSet(rs);
@@ -117,7 +117,7 @@ public class UserDBO extends DatabaseObject {
                 users.add(tmp);
             }
         } catch (SQLException exp) {
-            Utility.logError(exp);
+            Logger.logError(exp);
         }
 
         return users;
