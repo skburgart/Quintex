@@ -106,6 +106,21 @@ public class UserDBO extends DatabaseObject {
         return result;
     }
 
+    public void logLogin(int userid, String ip) {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = prepare("INSERT INTO user_login_history(userid, ip, timestamp) VALUES (?, ?, NOW())");
+
+            stmt.setInt(1, userid);
+            stmt.setString(2, ip);
+
+            stmt.executeUpdate();
+        } catch (SQLException exp) {
+            Logger.logError(exp);
+        }
+    }
+
     private ArrayList<UserVO> parseResultSet(ResultSet rs) {
         ArrayList<UserVO> users = new ArrayList<UserVO>();
 
@@ -126,5 +141,4 @@ public class UserDBO extends DatabaseObject {
 
         return users;
     }
-
 }
