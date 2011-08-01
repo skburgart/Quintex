@@ -12,8 +12,8 @@
     <body>
         <jsp:include page="header.jsp"/>
         <div id='content'>
-            <h2>Logged-in Secion</h2>
-            <p>Welcome!</p>
+            <h2>Logged-in Section</h2>
+            <p>Welcome <%= session.getAttribute("username")%>!</p>
         </div>
         <jsp:include page="/footer.jsp"/>
     </body>
