@@ -11,6 +11,7 @@
     background: #93CCEA;
     border: 3px solid cornflowerblue;
     border-radius: 0 0 15px 15px;
+    -moz-border-radius: 0 0 15px 15px;
     position: absolute;
     top: 21px;
     left: -2px;
