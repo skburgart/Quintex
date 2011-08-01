@@ -34,6 +34,7 @@ public class Login extends HttpServlet {
         if (result == 1) {
             UserVO user = udbo.getFromUsername(username);
             udbo.logLogin(user.userid, request.getRemoteAddr());
+            session.setAttribute("userid", user.userid);
             session.setAttribute("username", user.username);
         }
 
