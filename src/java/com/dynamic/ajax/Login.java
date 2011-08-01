@@ -24,17 +24,16 @@ public class Login extends HttpServlet {
         HttpSession session = request.getSession(true);
         Logger.log("Login Servlet");
 
-        int result = 0;
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         UserDBO udbo = new UserDBO();
 
-        if (udbo.validate(username, password)) {
+        int result = udbo.validate(username, password);
+        if (result == 1) {
             UserVO user = udbo.getFromUsername(username);
             session.setAttribute("username", user.username);
-            result = 1;
         }
 
         response.setContentType("text/xml");

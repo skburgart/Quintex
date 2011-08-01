@@ -30,13 +30,17 @@ function validateLogin(data) {
 function parseLogin (xmlResponse) {
     var response = $(xmlResponse).find("loginResponse").text();
 
-    if (response == 1) {
+    if (response == 1) { // login valid
         window.location = "user/";
     } else {
         $('.login-input').removeAttr('disabled');
-        loginMessage("Login failed");
-        $("input[name=login-username]").val("").focus();
-        $("input[name=login-password]").val("");
+        if (response == 0) { // invalid username
+            loginMessage("Username not found");
+            $("input[name=login-username]").focus();
+        } else if (response == 2) { // incorrect password
+            loginMessage("Password incorrect");
+            $("input[name=login-password]").val("").focus();;
+        }
     }
 
 }

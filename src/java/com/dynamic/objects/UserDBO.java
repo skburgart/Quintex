@@ -88,18 +88,22 @@ public class UserDBO extends DatabaseObject {
         }
     }
 
-    public boolean validate(String username, String password) {
-        boolean isValid = false;
+    public int validate(String username, String password) {
+        int result;
 
         UserVO user = getFromUsername(username);
 
         if (user != null) {
             if (SHA.getSHAOne(password).equals(user.password)) {
-                isValid = true;
+                result = 1; // valid login
+            } else {
+                result = 2; // password incorrect
             }
+        } else {
+            result = 0; // invalid username
         }
 
-        return isValid;
+        return result;
     }
 
     private ArrayList<UserVO> parseResultSet(ResultSet rs) {
