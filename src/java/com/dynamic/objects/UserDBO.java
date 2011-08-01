@@ -20,19 +20,23 @@ public class UserDBO extends DatabaseObject {
         }
     }
 
-    public int add(UserVO user) {
+    public int add(String username, String password) {
         int result = 0;
         PreparedStatement stmt = null;
 
-        try {
-            stmt = prepare("INSERT INTO user(username, password, registered) VALUES (?, ?, NOW())");
+        if (getFromUsername(username) != null) {
+            try {
+                stmt = prepare("INSERT INTO user(username, password, registered) VALUES (?, ?, NOW())");
 
-            stmt.setString(1, user.username);
-            stmt.setString(2, SHA.getSHAOne(user.password));
+                stmt.setString(1, username);
+                stmt.setString(2, SHA.getSHAOne(password));
 
-            stmt.executeUpdate();
-        } catch (SQLException exp) {
-            Utility.logError(exp);
+                result = stmt.executeUpdate();
+            } catch (SQLException exp) {
+                Utility.logError(exp);
+            }
+        } else {
+            result = 2;
         }
 
         return result;
@@ -119,13 +123,4 @@ public class UserDBO extends DatabaseObject {
         return users;
     }
 
-    public static void main(String[] args) {
-        UserDBO udbo = new UserDBO();
-        UserVO user = new UserVO();
-
-        user.username = "Sally";
-        user.password = SHA.getSHAOne("123");
-
-        udbo.add(user);
-    }
 }

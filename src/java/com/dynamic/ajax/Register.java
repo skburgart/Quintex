@@ -1,6 +1,8 @@
 package com.dynamic.ajax;
 
 import com.dynamic.helpers.Utility;
+import com.dynamic.objects.UserDBO;
+import com.dynamic.objects.UserVO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,11 +20,22 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+
         Utility.log("Register Servlet");
+
+        int result = 0;
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        UserDBO udbo = new UserDBO();
+
+        result = udbo.add(username, password);
 
         response.setContentType("text/xml");
         response.setHeader("Cache-Control", "no-cache");
-        response.getWriter().write("<response>0</response>");
+        response.getWriter().write("<registerResponse>" + Integer.toString(result) + "</registerResponse>");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

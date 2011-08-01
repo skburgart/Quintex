@@ -1,12 +1,13 @@
-function login() {
-    var url = "login";
+// TODO: Register JS
+
+function register() {
+    var url = "register";
     var data = {
         "username": $('input[name=username]').val(),
         "password": $('input[name=password]').val()
     }
 
     if (validateLogin(data)) {
-        $('.text').attr("disabled", "true");
         ajaxRequest(url, data, parseLogin)
     }
 }

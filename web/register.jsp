@@ -5,10 +5,12 @@
 --%>
 
 <!DOCTYPE html>
+<!--TODO: register jsp-->
 <html>
     <head>
         <title>Dynamic</title>
         <jsp:include page="common-headers.jsp"/>
+        <script src="js/ajax/register.js"></script>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
