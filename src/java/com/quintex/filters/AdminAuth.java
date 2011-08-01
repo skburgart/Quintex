@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.quintex.filters;
 
 import java.io.IOException;
@@ -23,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author steve
  */
-@WebFilter(filterName = "UserAuthFilter", urlPatterns = {"/user/*"})
-public class UserAuth implements Filter {
+@WebFilter(filterName = "AdminAuth", urlPatterns = {"/admin/*"})
+public class AdminAuth implements Filter {
 
     private static final boolean debug = true;
     // The filter configuration object we are associated with.  If
@@ -32,7 +28,7 @@ public class UserAuth implements Filter {
     // configured.
     private FilterConfig filterConfig = null;
 
-    public UserAuth() {
+    public AdminAuth() {
     }
 
     public void doFilter(ServletRequest request, ServletResponse response,
@@ -40,14 +36,14 @@ public class UserAuth implements Filter {
             throws IOException, ServletException {
 
         if (debug) {
-            log("UserAuthFilter:doFilter()");
+            log("AdminAuth:doFilter()");
         }
 
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpSession session = httpReq.getSession(true);
 
-        if (session.getAttribute("username") == null) {
-            ((HttpServletResponse) response).sendRedirect("/Quintex/index.jsp");
+        if (!((String)session.getAttribute("flags")).contains("a")) {
+            ((HttpServletResponse) response).sendRedirect("/Quintex/user/index.jsp");
             return;
         }
 
@@ -62,7 +58,6 @@ public class UserAuth implements Filter {
             problem = t;
             t.printStackTrace();
         }
-
 
         // If there was a problem, we want to rethrow it if it is
         // a known type, otherwise log it.
@@ -106,7 +101,7 @@ public class UserAuth implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {
-                log("UserAuthFilter:Initializing filter");
+                log("AdminAuth:Initializing filter");
             }
         }
     }
@@ -117,9 +112,9 @@ public class UserAuth implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("UserAuthFilter()");
+            return ("AdminAuth()");
         }
-        StringBuffer sb = new StringBuffer("UserAuthFilter(");
+        StringBuffer sb = new StringBuffer("AdminAuth(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
@@ -135,6 +130,7 @@ public class UserAuth implements Filter {
                 PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
+                // PENDING! Localize this for next official release
                 pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
                 pw.print(stackTrace);
                 pw.print("</pre></body>\n</html>"); //NOI18N
