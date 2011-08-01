@@ -12,7 +12,7 @@
             <a href="javascript:showLogin()">Login</a>
             <span id="login">
                 <form action="javascript:login()">
-                    <div id="login-msg">Hello</div>
+                    <div id="login-msg"></div>
                     <p>Username</p>
                     <p><input type="text" name="login-username" class="login"/></p>
                     <p>Password</p>

@@ -29,11 +29,12 @@
     font-size: 1.2em;
 }
 
-#login-msg {
+#login-msg, #register-msg {
     display: none;
     color: black;
     background: pink;
     border: 2px solid darkred;
     padding: 5px;
     margin-bottom: 10px;
+    font-weight: bold;
 }

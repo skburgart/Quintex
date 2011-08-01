@@ -24,7 +24,7 @@ public class UserDBO extends DatabaseObject {
         int result = 0;
         PreparedStatement stmt = null;
 
-        if (getFromUsername(username) != null) {
+        if (getFromUsername(username) == null) {
             try {
                 stmt = prepare("INSERT INTO user(username, password, registered) VALUES (?, ?, NOW())");
 

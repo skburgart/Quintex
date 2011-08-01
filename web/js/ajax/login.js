@@ -33,7 +33,6 @@ function parseLogin (xmlResponse) {
     $('.text').removeAttr('disabled');
 
     if (response == 1) {
-        loginMessage("Success! Redirecting...");
         window.location = "user/";
     } else {
         loginMessage("Login failed");

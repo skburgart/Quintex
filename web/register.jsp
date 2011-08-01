@@ -15,24 +15,27 @@
     <body>
         <jsp:include page="header.jsp"/>
         <div id='content-center'>
+            <div id="register-msg"></div>
             <h2>Registration</h2>
-            <table id="register-table">
-                <tr>
-                    <td class="left">Username</td>
-                    <td><input type="text" /></td>
-                </tr>
-                <tr>
-                    <td class="left">Password</td>
-                    <td><input type="text" /></td>
-                </tr>
-                <tr>
-                    <td class="left">Confirm Password</td>
-                    <td><input type="text" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="submit" id="submit"/></td>
-                </tr>
-            </table>
+            <form action="javascript:register()">
+                <table id="register-table">
+                    <tr>
+                        <td class="left">Username</td>
+                        <td><input type="text" name="register-username" class="register-input" /></td>
+                    </tr>
+                    <tr>
+                        <td class="left">Password</td>
+                        <td><input type="password" name="register-password1" class="register-input" /></td>
+                    </tr>
+                    <tr>
+                        <td class="left">Confirm Password</td>
+                        <td><input type="password" name="register-password2" class="register-input" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" id="submit"/></td>
+                    </tr>
+                </table>
+            </form>
         </div>
         <jsp:include page="footer.jsp"/>
     </body>

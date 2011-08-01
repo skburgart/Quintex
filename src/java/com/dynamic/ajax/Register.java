@@ -20,7 +20,6 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
         Logger.log("Register Servlet");
 
         int result = 0;
