@@ -39,7 +39,7 @@ function parseLogin (xmlResponse) {
             $("input[name=login-username]").focus();
         } else if (response == 2) { // incorrect password
             loginMessage("Password incorrect");
-            $("input[name=login-password]").val("").focus();;
+            $("input[name=login-password]").val("").focus();
         }
     }
 

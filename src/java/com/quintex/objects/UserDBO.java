@@ -15,8 +15,8 @@ public class UserDBO extends DatabaseObject {
 
     class NoSuchUser extends Error {
 
-        NoSuchUser() {
-            super();
+        NoSuchUser(int userid) {
+            super(Integer.toString(userid));
         }
     }
 
@@ -59,7 +59,7 @@ public class UserDBO extends DatabaseObject {
         users = parseResultSet(rs);
 
         if (users.isEmpty()) {
-            throw new NoSuchUser();
+            throw new NoSuchUser(userid);
         }
 
         return users.get(0);
@@ -121,6 +121,20 @@ public class UserDBO extends DatabaseObject {
         }
     }
 
+    public boolean isAdmin(int userid) {
+        return getFlags(userid).contains("a");
+    }
+
+    private String getFlags(int userid) {
+        UserVO user = get(userid);
+
+        if (user.flags == null) {
+            return "";
+        }
+
+        return user.flags;
+    }
+
     private ArrayList<UserVO> parseResultSet(ResultSet rs) {
         ArrayList<UserVO> users = new ArrayList<UserVO>();
 
@@ -132,6 +146,7 @@ public class UserDBO extends DatabaseObject {
                 tmp.username = rs.getString("username");
                 tmp.password = rs.getString("password");
                 tmp.registered = rs.getTimestamp("registered");
+                tmp.flags = rs.getString("flags");
 
                 users.add(tmp);
             }
@@ -140,5 +155,11 @@ public class UserDBO extends DatabaseObject {
         }
 
         return users;
+    }
+
+    public static void main(String[] args) {
+        UserDBO udbo = new UserDBO();
+
+        System.out.println(udbo.isAdmin(20));
     }
 }
