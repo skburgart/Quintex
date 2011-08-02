@@ -2,7 +2,6 @@ package com.quintex.objects;
 
 import com.quintex.helpers.SHA;
 import com.quintex.helpers.Logger;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,20 +20,11 @@ public class UserDBO extends DatabaseObject {
     }
 
     public int add(String username, String password) {
+        String query = "INSERT INTO user(username, password, registered) VALUES (?, ?, NOW())";
         int result = 0;
-        PreparedStatement stmt = null;
 
         if (getFromUsername(username) == null) {
-            try {
-                stmt = prepare("INSERT INTO user(username, password, registered) VALUES (?, ?, NOW())");
-
-                stmt.setString(1, username);
-                stmt.setString(2, SHA.getSHAOne(password));
-
-                result = stmt.executeUpdate();
-            } catch (SQLException exp) {
-                Logger.logError(exp);
-            }
+            result = update(query , username, SHA.getSHAOne(password));
         } else {
             result = 2;
         }
@@ -44,19 +34,8 @@ public class UserDBO extends DatabaseObject {
 
     public UserVO get(int userid) {
 
-        ArrayList<UserVO> users = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            stmt = prepare("SELECT * FROM user WHERE userid=?");
-            stmt.setInt(1, userid);
-            rs = stmt.executeQuery();
-        } catch (SQLException exp) {
-            Logger.logError(exp);
-        }
-
-        users = parseResultSet(rs);
+        String query = "SELECT * FROM user WHERE userid=?";
+        ArrayList<UserVO> users = parseResultSet(select(query , userid));
 
         if (users.isEmpty()) {
             throw new NoSuchUser(userid);
@@ -67,19 +46,8 @@ public class UserDBO extends DatabaseObject {
 
     public UserVO getFromUsername(String username) {
 
-        ArrayList<UserVO> users = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            stmt = prepare("SELECT * FROM user WHERE username=?");
-            stmt.setString(1, username);
-            rs = stmt.executeQuery();
-        } catch (SQLException exp) {
-            Logger.logError(exp);
-        }
-
-        users = parseResultSet(rs);
+        String query = "SELECT * FROM user WHERE username=?";
+        ArrayList<UserVO> users = parseResultSet(select(query , username));
 
         if (users.isEmpty()) {
             return null;
@@ -107,18 +75,10 @@ public class UserDBO extends DatabaseObject {
     }
 
     public void logLogin(int userid, String ip) {
-        PreparedStatement stmt = null;
 
-        try {
-            stmt = prepare("INSERT INTO user_login_history(userid, ip, timestamp) VALUES (?, ?, NOW())");
+        String query = "INSERT INTO user_login_history(userid, ip, timestamp) VALUES (?, ?, NOW())";
+        update(query, userid, ip);
 
-            stmt.setInt(1, userid);
-            stmt.setString(2, ip);
-
-            stmt.executeUpdate();
-        } catch (SQLException exp) {
-            Logger.logError(exp);
-        }
     }
 
     public boolean isAdmin(int userid) {
@@ -151,11 +111,5 @@ public class UserDBO extends DatabaseObject {
         }
 
         return users;
-    }
-
-    public static void main(String[] args) {
-        UserDBO udbo = new UserDBO();
-
-        System.out.println(udbo.isAdmin(20));
     }
 }
