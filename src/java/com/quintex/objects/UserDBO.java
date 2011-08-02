@@ -24,7 +24,7 @@ public class UserDBO extends DatabaseObject {
         int result = 0;
 
         if (getFromUsername(username) == null) {
-            result = update(query , username, SHA.getSHAOne(password));
+            result = update(query, username, SHA.getSHAOne(password));
         } else {
             result = 2;
         }
@@ -35,7 +35,7 @@ public class UserDBO extends DatabaseObject {
     public UserVO get(int userid) {
 
         String query = "SELECT * FROM user WHERE userid=?";
-        ArrayList<UserVO> users = parseResultSet(select(query , userid));
+        ArrayList<UserVO> users = parseResultSet(select(query, userid));
 
         if (users.isEmpty()) {
             throw new NoSuchUser(userid);
@@ -47,7 +47,7 @@ public class UserDBO extends DatabaseObject {
     public UserVO getFromUsername(String username) {
 
         String query = "SELECT * FROM user WHERE username=?";
-        ArrayList<UserVO> users = parseResultSet(select(query , username));
+        ArrayList<UserVO> users = parseResultSet(select(query, username));
 
         if (users.isEmpty()) {
             return null;
@@ -62,7 +62,7 @@ public class UserDBO extends DatabaseObject {
         UserVO user = getFromUsername(username);
 
         if (user != null) {
-            if (SHA.getSHAOne(password).equals(user.password)) {
+            if (SHA.getSHAOne(password).equals(user.getPassword())) {
                 result = 1; // valid login
             } else {
                 result = 2; // password incorrect
@@ -88,7 +88,7 @@ public class UserDBO extends DatabaseObject {
     private String getFlags(int userid) {
         UserVO user = get(userid);
 
-        return user.flags;
+        return user.getFlags();
     }
 
     private ArrayList<UserVO> parseResultSet(ResultSet rs) {
@@ -98,11 +98,11 @@ public class UserDBO extends DatabaseObject {
             while (rs.next()) {
                 UserVO tmp = new UserVO();
 
-                tmp.userid = rs.getInt("userid");
-                tmp.username = rs.getString("username");
-                tmp.password = rs.getString("password");
-                tmp.registered = rs.getTimestamp("registered");
-                tmp.flags = rs.getString("flags");
+                tmp.setUserid(rs.getInt("userid"));
+                tmp.setUsername(rs.getString("username"));
+                tmp.setPassword(rs.getString("password"));
+                tmp.setRegistered(rs.getTimestamp("registered"));
+                tmp.setFlags(rs.getString("flags"));
 
                 users.add(tmp);
             }

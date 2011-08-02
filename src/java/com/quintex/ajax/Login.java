@@ -33,10 +33,10 @@ public class Login extends HttpServlet {
         int result = udbo.validate(username, password);
         if (result == 1) {
             UserVO user = udbo.getFromUsername(username);
-            udbo.logLogin(user.userid, request.getRemoteAddr());
-            session.setAttribute("userid", user.userid);
-            session.setAttribute("username", user.username);
-            session.setAttribute("flags", user.flags);
+            udbo.logLogin(user.getUserid(), request.getRemoteAddr());
+            session.setAttribute("userid", user.getUserid());
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("flags", user.getFlags());
         }
 
         response.setContentType("text/xml");
