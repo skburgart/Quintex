@@ -1,25 +1,28 @@
 function login() {
     var url = "login";
     var data = {
-        "username": $('input[name=login-username]').val(),
-        "password": $('input[name=login-password]').val()
+        "username": $('input[name=login-username]'),
+        "password": $('input[name=login-password]')
     }
 
     if (validateLogin(data)) {
         $('.login-input').attr("disabled", "true");
-        ajaxRequest(url, data, parseLogin)
+        ajaxRequest(url, {
+            "username": data.username.val(), 
+            "password": data.password.val()
+        }, parseLogin)
     }
 }
 
 function validateLogin(data) {
     var valid = false;
 
-    if (!data.username) {
+    if (!data.username.val()) {
         loginMessage("Enter username");
-        $('input[name=login-username]').focus();
-    } else if (!data.password) {
+        data.username.focus();
+    } else if (!data.password.val()) {
         loginMessage("Enter password");
-        $('input[name=login-password]').focus();
+        data.password.focus();
     } else {
         valid = true;
     }
