@@ -1,6 +1,7 @@
 package com.quintex.ajax;
 
 import com.quintex.helpers.Logger;
+import com.quintex.helpers.Regex;
 import com.quintex.objects.UserDBO;
 import com.quintex.objects.UserVO;
 import java.io.IOException;
@@ -30,12 +31,16 @@ public class Register extends HttpServlet {
 
         UserDBO udbo = new UserDBO();
 
-        // TODO: Add hard email verifier
-        if (password.length() >= 6 && username.length() <= 32 && username.length() >= 3) {
+        if (password.length() >= 6
+                && username.length() <= 32
+                && username.length() >= 3
+                && Regex.match(Regex.email, email)
+                && Regex.match(Regex.username, username)) {
             result = udbo.add(username, password, email);
         } else {
             result = 0;
         }
+
 
         response.setContentType("text/xml");
         response.setHeader("Cache-Control", "no-cache");

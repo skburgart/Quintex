@@ -33,6 +33,9 @@ function validateRegistration(data) {
     } else if (data.username.val().length > 32) {
         registerMessage("Username must be at most 32 characters");
         data.username.focus();
+    } else if (!validateUsername(data.username.val())) {
+        registerMessage("Username must start with a letter and not contain special characters");
+        data.username.focus();
     } else if (!validateEmail(data.email.val())) {
         registerMessage("Invalid email address");
         data.email.focus();
@@ -58,6 +61,15 @@ function validateRegistration(data) {
 function validateEmail(email) {
     var regex = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     if (regex.test(email)){
+        return true;
+    }
+    
+    return false;
+}
+
+function validateUsername(username) {
+    var regex = /^[A-Za-z]\w+$/;
+    if (regex.test(username)){
         return true;
     }
     
