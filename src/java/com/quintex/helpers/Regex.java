@@ -23,12 +23,4 @@ public class Regex {
         Matcher m = p.matcher(source);
         return m.find();
     }
-
-    public static void main(String[] args) {
-        if (Regex.match(Regex.username, "S5teve")) {
-            System.out.println("Match");
-        } else {
-            System.out.println("No match");
-        }
-    }
 }
