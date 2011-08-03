@@ -5,7 +5,6 @@
 --%>
 
 <!DOCTYPE html>
-<!--TODO: register jsp-->
 <html>
     <head>
         <title>Quintex</title>
