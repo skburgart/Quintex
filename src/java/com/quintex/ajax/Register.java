@@ -29,7 +29,11 @@ public class Register extends HttpServlet {
 
         UserDBO udbo = new UserDBO();
 
-        result = udbo.add(username, password);
+        if (password.length() >= 6) {
+            result = udbo.add(username, password);
+        } else {
+            result = 0;
+        }
 
         response.setContentType("text/xml");
         response.setHeader("Cache-Control", "no-cache");

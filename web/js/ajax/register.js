@@ -34,6 +34,9 @@ function validateRegistration(data) {
     } else if (data.password1.val() != data.password2.val()) {
         registerMessage("Passwords do not match");
         data.password1.focus();
+    } else if (data.password1.val().length < 6){
+        registerMessage("Password must be at least 6 characters");
+        data.password1.focus();
     } else {
         valid = true;
     }

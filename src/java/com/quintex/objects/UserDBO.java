@@ -26,7 +26,7 @@ public class UserDBO extends DatabaseObject {
         if (getFromUsername(username) == null) {
             result = update(query, username, SHA.getSHAOne(password));
         } else {
-            result = 2;
+            result = 2; // Username exists
         }
 
         return result;
