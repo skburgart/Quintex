@@ -23,6 +23,10 @@
                         <td><input type="text" name="register-username" class="register-input" /></td>
                     </tr>
                     <tr>
+                        <td class="left">E-mail</td>
+                        <td><input type="text" name="register-email" class="register-input" /></td>
+                    </tr>
+                    <tr>
                         <td class="left">Password</td>
                         <td><input type="password" name="register-password1" class="register-input" /></td>
                     </tr>

@@ -6,6 +6,7 @@ function register() {
     var url = "register";
     var data = {
         "username": $('input[name=register-username]'),
+        "email": $('input[name=register-email]'),
         "password1": $('input[name=register-password1]'),
         "password2": $('input[name=register-password2]')
     }
@@ -14,6 +15,7 @@ function register() {
         $('.register-input').attr("disabled", "true");
         ajaxRequest(url, {
             "username": data.username.val(),
+            "email": data.email.val(),
             "password": data.password1.val()
         }, parseRegistration)
     }
@@ -25,6 +27,15 @@ function validateRegistration(data) {
     if (!data.username.val()) {
         registerMessage("Enter username");
         data.username.focus();
+    } else if (data.username.val().length < 3) {
+        registerMessage("Username must be at least 3 characters");
+        data.username.focus();
+    } else if (data.username.val().length > 32) {
+        registerMessage("Username must be at most 32 characters");
+        data.username.focus();
+    } else if (!validateEmail(data.email.val())) {
+        registerMessage("Invalid email address");
+        data.email.focus();
     } else if (!data.password1.val()) {
         registerMessage("Enter password");
         data.password1.focus();
@@ -42,6 +53,15 @@ function validateRegistration(data) {
     }
 
     return valid;
+}
+
+function validateEmail(email) {
+    var regex = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    if (regex.test(email)){
+        return true;
+    }
+    
+    return false;
 }
 
 function parseRegistration (xmlResponse) {

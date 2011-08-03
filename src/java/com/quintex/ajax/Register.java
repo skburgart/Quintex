@@ -26,11 +26,13 @@ public class Register extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String email = request.getParameter("email");
 
         UserDBO udbo = new UserDBO();
 
-        if (password.length() >= 6) {
-            result = udbo.add(username, password);
+        // TODO: Add hard email verifier
+        if (password.length() >= 6 && username.length() <= 32 && username.length() >= 3) {
+            result = udbo.add(username, password, email);
         } else {
             result = 0;
         }

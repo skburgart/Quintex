@@ -19,12 +19,12 @@ public class UserDBO extends DatabaseObject {
         }
     }
 
-    public int add(String username, String password) {
-        String query = "INSERT INTO user(username, password, registered) VALUES (?, ?, NOW())";
+    public int add(String username, String password, String email) {
+        String query = "INSERT INTO user(username, password, email, registered) VALUES (?, ?, ?, NOW())";
         int result = 0;
 
         if (getFromUsername(username) == null) {
-            result = update(query, username, SHA.getSHAOne(password));
+            result = update(query, username, SHA.getSHAOne(password), email);
         } else {
             result = 2; // Username exists
         }
