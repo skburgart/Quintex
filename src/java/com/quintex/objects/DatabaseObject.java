@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
 
 /**
  *
@@ -86,5 +87,21 @@ public abstract class DatabaseObject {
         }
 
         return result;
+    }
+
+    protected int count(String query, Object... args) {
+
+        int count = 0;
+
+        ResultSet rs = select(query, args);
+        try {
+            if (rs.first()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException exp) {
+            Logger.logError(exp);
+        }
+
+        return count;
     }
 }

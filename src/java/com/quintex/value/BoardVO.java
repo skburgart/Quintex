@@ -1,5 +1,7 @@
 package com.quintex.value;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Steven Burgart
@@ -7,11 +9,20 @@ package com.quintex.value;
 public class BoardVO {
 
     private int boardid;
+    private Timestamp timestamp;
     private String title;
     private String description;
 
     public int getBoardid() {
         return boardid;
+    }
+    
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     public void setBoardid(int boardid) {
