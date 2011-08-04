@@ -1,5 +1,6 @@
 package com.quintex.objects;
 
+import com.quintex.value.UserVO;
 import com.quintex.helpers.Email;
 import com.quintex.helpers.SHA;
 import com.quintex.helpers.Logger;

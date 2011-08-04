@@ -2,7 +2,7 @@ package com.quintex.ajax;
 
 import com.quintex.helpers.Logger;
 import com.quintex.objects.UserDBO;
-import com.quintex.objects.UserVO;
+import com.quintex.value.UserVO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

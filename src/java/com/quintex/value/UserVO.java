@@ -1,4 +1,4 @@
-package com.quintex.objects;
+package com.quintex.value;
 
 import java.sql.Timestamp;
 

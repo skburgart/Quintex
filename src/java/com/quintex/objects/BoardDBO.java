@@ -2,7 +2,7 @@ package com.quintex.objects;
 
 /**
  *
- * @author steve
+ * @author Steven Burgart
  */
 public class BoardDBO extends DatabaseObject {
     
