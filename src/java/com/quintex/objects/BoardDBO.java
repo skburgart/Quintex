@@ -33,7 +33,7 @@ public class BoardDBO extends DatabaseObject {
     public int numMessages(int boardid) {
         int messages = 0;
         TopicDBO tdbo = new TopicDBO();
-        ArrayList<TopicVO> topics = new ArrayList<TopicVO>();
+        ArrayList<TopicVO> topics = getTopics(boardid);
 
         for (TopicVO topic : topics) {
             messages += tdbo.numMessages(topic.getTopicid());
@@ -59,6 +59,7 @@ public class BoardDBO extends DatabaseObject {
                 topic.setUserid(rs.getInt("userid"));
                 topic.setTimestamp(rs.getTimestamp("timestamp"));
                 topic.setTitle(rs.getString("title"));
+                topics.add(topic);
             }
         } catch (SQLException exp) {
             Logger.logError(exp);

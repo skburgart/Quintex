@@ -47,6 +47,7 @@ public class TopicDBO extends DatabaseObject {
                 message.setUserid(rs.getInt("userid"));
                 message.setTimestamp(rs.getTimestamp("timestamp"));
                 message.setBody(rs.getString("body"));
+                messages.add(message);
             }
         } catch (SQLException exp) {
             Logger.logError(exp);

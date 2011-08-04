@@ -20,12 +20,4 @@ public class MessageDBO extends DatabaseObject {
 
         return update(query, messageid);
     }
-
-    public static void main(String[] args) {
-        BoardDBO bdbo = new BoardDBO();
-        TopicDBO tdbo = new TopicDBO();
-
-        Logger.log(Integer.toString(bdbo.numMessages(3)));
-        Logger.log(Integer.toString(tdbo.numMessages(2)));
-    }
 }
