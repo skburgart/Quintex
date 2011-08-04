@@ -1,10 +1,5 @@
 /**
- * Created By Tathagata Mukherjee
- * Jun 5, 2011
- * Modified by Steven Burgart
- * Jul 21, 2011
- * 2011
- * Player
+ * Steven Burgart
  */
 package com.quintex.helpers;
 
