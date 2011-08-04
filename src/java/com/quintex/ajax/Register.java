@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author steve
+ * @author Steven Burgart
  */
 @WebServlet(name = "UserRegisterServlet", urlPatterns = {"/register"})
 public class Register extends HttpServlet {

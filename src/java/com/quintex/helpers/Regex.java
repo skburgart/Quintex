@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author steve
+ * @author Steven Burgart
  */
 public class Regex {
 

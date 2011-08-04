@@ -1,10 +1,5 @@
 package com.quintex.helpers;
 
-/**
- *
- * @author steve
- * 
- */
 import java.util.Formatter;
 import java.util.Properties;
 
@@ -16,6 +11,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ *
+ * @author Steven Burgart
+ */
 public class Email {
     
     private static final String SMTP_HOST_NAME = "smtp.gmail.com";

@@ -1,11 +1,12 @@
-/**
- * @author steve
- */
 package com.quintex.helpers;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ *
+ * @author Steven Burgart
+ */
 public class Logger {
 
     public static void log(String message) {

@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author steve
+ * @author Steven Burgart
  */
 public class UserVO {
 

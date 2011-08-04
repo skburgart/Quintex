@@ -1,9 +1,5 @@
 package com.quintex.objects;
 
-/**
- *
- * @author steve
- */
 import com.quintex.helpers.Logger;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
@@ -11,6 +7,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author Steven Burgart
+ */
 public abstract class DatabaseObject {
 
     class NoSuchDBSelectType extends Error {

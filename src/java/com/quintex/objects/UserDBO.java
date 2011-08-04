@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author steve
+ * @author Steven Burgart
  */
 public class UserDBO extends DatabaseObject {
 
@@ -84,7 +84,9 @@ public class UserDBO extends DatabaseObject {
 
         if (user != null) {
             result = update(query, SHA.getSHAOne(newPassword), username);
-            Email.resetPassword(user.getEmail(), user.getUsername(), newPassword);
+            if (result) {
+                Email.resetPassword(user.getEmail(), user.getUsername(), newPassword);
+            }
         } else {
             result = 2; // invalid username
         }

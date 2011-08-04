@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author steve
+ * @author Steven Burgart
  */
 @WebFilter(filterName = "AdminAuth", urlPatterns = {"/admin/*"})
 public class AdminAuth implements Filter {
