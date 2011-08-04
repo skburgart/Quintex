@@ -10,7 +10,7 @@
         <li><a href="index.jsp">Home</a></li>
         <li>
             <a href="javascript:showLogin()">Login</a>
-            <span id="login">
+            <div id="login">
                 <form action="javascript:login()">
                     <div class="msg-error" id="login-msg"></div>
                     <p>Username</p>
@@ -19,11 +19,11 @@
                     <p><input type="password" name="login-password" class="login login-input"/></p>
                     <p style="float:left">
                         <a href="register.jsp">Register</a><br />
-                        <a href="#">Forgot Password</a>
+                        <a href="forgot-password.jsp">Forgot Password</a>
                     </p>
                     <input style="float: right" type="submit" class="submit login-input" value="Login" />
                 </form>
-            </span>
+            </div>
         </li>
     </ul>
 </div>

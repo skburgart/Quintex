@@ -37,10 +37,10 @@ function parseLogin (xmlResponse) {
         window.location = "user/";
     } else {
         $('.login-input').removeAttr('disabled');
-        if (response == 0) { // invalid username
+        if (response == 2) { // invalid username
             loginMessage("Username not found");
             $("input[name=login-username]").focus();
-        } else if (response == 2) { // incorrect password
+        } else if (response == 3) { // incorrect password
             loginMessage("Password incorrect");
             $("input[name=login-password]").val("").focus();
         }

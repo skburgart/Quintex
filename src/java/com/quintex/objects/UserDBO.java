@@ -1,5 +1,6 @@
 package com.quintex.objects;
 
+import com.quintex.helpers.Email;
 import com.quintex.helpers.SHA;
 import com.quintex.helpers.Logger;
 import java.sql.ResultSet;
@@ -65,13 +66,55 @@ public class UserDBO extends DatabaseObject {
             if (SHA.getSHAOne(password).equals(user.getPassword())) {
                 result = 1; // valid login
             } else {
-                result = 2; // password incorrect
+                result = 3; // password incorrect
             }
         } else {
-            result = 0; // invalid username
+            result = 2; // invalid username
         }
 
         return result;
+    }
+
+    public int resetPassword(String username) {
+        int result = 0;
+        String query = "UPDATE user SET password=? WHERE username=?";
+        String newPassword = generatePassword();
+
+        UserVO user = getFromUsername(username);
+
+        if (user != null) {
+            result = update(query, SHA.getSHAOne(newPassword), username);
+            Email.resetPassword(user.getEmail(), user.getUsername(), newPassword);
+        } else {
+            result = 2; // invalid username
+        }
+
+        return result;
+    }
+
+    private String generatePassword() {
+        int passowrdLength = 6;
+        StringBuilder sb = new StringBuilder(passowrdLength);
+
+        for (int i = 0; i < passowrdLength; i++) {
+            int randomType = (int) (Math.random() * 3);
+            char randomChar = '\0';
+            switch (randomType) {
+                case 0:
+                    randomChar = (char)('0' + (int) (Math.random() * 10));
+                    break;
+                case 1:
+                    randomChar = (char)('a' + (int) (Math.random() * 10));
+                    break;
+                case 2:
+                    randomChar = (char)('A' + (int) (Math.random() * 10));
+                    break;
+            }
+            
+            sb.append(randomChar);
+        }
+
+        return sb.toString();
     }
 
     public void logLogin(int userid, String ip) {
@@ -100,6 +143,7 @@ public class UserDBO extends DatabaseObject {
 
                 tmp.setUserid(rs.getInt("userid"));
                 tmp.setUsername(rs.getString("username"));
+                tmp.setEmail(rs.getString("email"));
                 tmp.setPassword(rs.getString("password"));
                 tmp.setRegistered(rs.getTimestamp("registered"));
                 tmp.setFlags(rs.getString("flags"));

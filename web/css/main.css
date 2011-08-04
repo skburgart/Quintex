@@ -97,15 +97,15 @@ a {
     color: #3EB0FF;
 }
 
-#register-table {
+#form-table {
     margin: auto;
     border-spacing: 10px;
 }
 
-#register-table td.left{
+#form-table td.left{
     text-align: right;
     padding-right: 10px;
 }
 
-#register-table #submit {
+#form-table #submit {
 }

@@ -5,6 +5,7 @@ package com.quintex.helpers;
  * @author steve
  * 
  */
+import java.util.Formatter;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -16,16 +17,24 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class Email {
-
-    public static void main (String[] args) {
-
-    }
     
     private static final String SMTP_HOST_NAME = "smtp.gmail.com";
     private static final String SMTP_PORT = "465";
     private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+    private static final String FROM_EMAIL = "quintex.noreply@gmail.com";
+    
+    private static final String RESET_SUBJECT = "Password Reset at Quintex";
+    private static final String RESET_BODY = "Dear %s,\n\nYou have recently requested to reset your password at Quintex. \nYour new password is: %s\n\n- Quintex";
 
-    public static void send(String to, String from, String subject, String message) {
+    public static void resetPassword(String email, String username, String newPassword) {
+        
+        Formatter f = new Formatter();
+        String body = f.format(RESET_BODY, username, newPassword).toString();
+
+        send(email, RESET_SUBJECT, body);
+    }
+    
+    private static void send(String to, String subject, String message) {
         boolean debug = true;
 
         Properties props = new Properties();
@@ -42,13 +51,13 @@ public class Email {
 
                     @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("quintex.noreply@gmail.com", "quintex123");
+                        return new PasswordAuthentication(FROM_EMAIL, "quintex123");
                     }
                 });
 
         Message msg = new MimeMessage(session);
         try {
-            InternetAddress addressFrom = new InternetAddress(from);
+            InternetAddress addressFrom = new InternetAddress(FROM_EMAIL);
             InternetAddress addressTo = new InternetAddress(to);
 
             msg.setFrom(addressFrom);

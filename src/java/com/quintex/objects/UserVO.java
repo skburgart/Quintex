@@ -10,6 +10,7 @@ public class UserVO {
 
     private int userid;
     private String username;
+    private String email;
     private String password;
     private Timestamp registered;
     private String flags;
@@ -32,6 +33,14 @@ public class UserVO {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setEmail(String email ) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setPassword(String password ) {
