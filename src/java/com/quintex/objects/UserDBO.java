@@ -84,7 +84,7 @@ public class UserDBO extends DatabaseObject {
 
         if (user != null) {
             result = update(query, SHA.getSHAOne(newPassword), username);
-            if (result) {
+            if (result == 1) {
                 Email.resetPassword(user.getEmail(), user.getUsername(), newPassword);
             }
         } else {
