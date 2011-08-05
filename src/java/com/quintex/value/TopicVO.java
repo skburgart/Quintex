@@ -11,7 +11,10 @@ public class TopicVO {
     private int boardid;
     private int userid;
     private Timestamp timestamp;
+    private Timestamp latest;
     private String title;
+    private String creator;
+    private int messages;
     
     public int getTopicid() {
         return topicid;
@@ -37,8 +40,16 @@ public class TopicVO {
         this.userid = userid;
     }
     
+    public Timestamp getLatest() {
+        return latest;
+    }
+
+    public void setLatest(Timestamp latest) {
+        this.latest = latest;
+    }
+    
     public Timestamp getTimestamp() {
-        return timestamp;
+        return latest;
     }
 
     public void setTimestamp(Timestamp timestamp) {
@@ -51,5 +62,21 @@ public class TopicVO {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public int getMessages() {
+        return messages;
+    }
+
+    public void setMessages(int messages) {
+        this.messages = messages;
     }
 }

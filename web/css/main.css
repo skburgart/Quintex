@@ -119,10 +119,13 @@ a {
 #form-table #submit {
 }
 
-h2.center {
+h2.center, h3.center {
     text-align: center;
 }
 
+h2.center {
+    font-size: 2em;
+}
 #boards {
     margin-top: 10px;
     width: 100%;

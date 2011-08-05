@@ -5,7 +5,6 @@ import com.quintex.value.BoardVO;
 import com.quintex.value.TopicVO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +12,17 @@ import java.util.ArrayList;
  * @author Steven Burgart
  */
 public class BoardDBO extends DatabaseObject {
+
+    public BoardVO get(int boardid) {
+        String query = "SELECT * FROM board WHERE boardid=?";
+
+        ArrayList<BoardVO> boards = parseBoards(select(query, boardid));
+        
+        if (boards.size() > 0)
+            return boards.get(0);
+        else
+            return null;
+    }
 
     public int add(String title, String description) {
         String query = "INSERT INTO board(title, description) VALUES(?, ?)";
@@ -27,7 +37,7 @@ public class BoardDBO extends DatabaseObject {
     }
 
     public ArrayList<TopicVO> getTopics(int boardid) {
-        String query = "SELECT * FROM topic WHERE boardid=?";
+        String query = "SELECT topicid AS tid, username AS creator, title, (SELECT COUNT(*) FROM message WHERE topicid=tid) AS messages, (SELECT MAX(timestamp) FROM message WHERE topicid=tid) AS latest FROM topic NATURAL JOIN user WHERE boardid=?";
 
         return parseTopics(select(query, boardid));
     }
@@ -83,11 +93,10 @@ public class BoardDBO extends DatabaseObject {
         try {
             while (rs.next()) {
                 TopicVO topic = new TopicVO();
-                topic.setTopicid(rs.getInt("topicid"));
-                topic.setBoardid(rs.getInt("boardid"));
-                topic.setUserid(rs.getInt("userid"));
-                topic.setTimestamp(rs.getTimestamp("timestamp"));
+                topic.setTopicid(rs.getInt("tid"));
                 topic.setTitle(rs.getString("title"));
+                topic.setMessages(rs.getInt("messages"));
+                topic.setCreator(rs.getString("creator"));
                 topics.add(topic);
             }
         } catch (SQLException exp) {
