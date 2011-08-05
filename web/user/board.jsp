@@ -35,7 +35,7 @@
                     for (TopicVO topic : topics) {
                         out.println("<tr>");
                         out.println("<td class='board'><a href='topic.jsp?topicid=" + topic.getTopicid() + "'>" + topic.getTitle() + "</a></td>");
-                        out.println("<td>" + topic.getCreator() + "</td>");
+                        out.println("<td><a href='profile.jsp?" + topic.getUserid() + "'>" + topic.getCreator() + "</a></td>");
                         out.println("<td>" + topic.getMessages() + "</td>");
                         out.println("<td>" + topic.getLatest() + "</td>");
                         out.println("</tr>");

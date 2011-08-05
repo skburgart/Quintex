@@ -30,8 +30,8 @@
                         out.println("<tr>");
                         out.println("<td class='board'><a href='board.jsp?boardid=" + board.getBoardid() + "'>" + board.getTitle() + "</a><br />");
                         out.println(board.getDescription() + "</td>");
-                        out.println("<td>" + board.getMessages() + "</td>");
                         out.println("<td>" + board.getTopics() + "</td>");
+                        out.println("<td>" + board.getMessages() + "</td>");
                         out.println("</tr>");
                     }
                 %>

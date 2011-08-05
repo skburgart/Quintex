@@ -42,12 +42,6 @@ public class TopicDBO extends DatabaseObject {
         return parseMessages(select(query, topicid));
     }
 
-    public int numMessages(int topicid) {
-        String query = "SELECT count(*) FROM message WHERE topicid=?";
-
-        return aggregate(query, topicid);
-    }
-
     public int delete(int topicid) {
         String query = "DELETE FROM topic WHERE topicid=?";
 
