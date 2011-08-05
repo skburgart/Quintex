@@ -54,6 +54,7 @@ public class TopicDBO extends DatabaseObject {
         try {
             if (rs.first()) {
                 topic.setTitle(rs.getString("title"));
+                topic.setTopicid(rs.getInt("topicid"));
                 topic.setBoardid(rs.getInt("boardid"));
             } else
                 topic = null;

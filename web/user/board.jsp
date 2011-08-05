@@ -28,9 +28,8 @@
         <div id='content'>
             <h2 class="center"><%= thisBoard.getTitle()%></h2>
             <table id="boards">
-                <tr>
-                    <th>Topic Title</th><th>Created By</th><th>Msgs</th><th>Last Post</th>
-                </tr>
+                <tr ><th colspan="4" style="background: #C4C4C4"><a href="new-topic.jsp?boardid=<%= thisBoard.getBoardid()%>">Create Topic</a></tr>
+                <tr><th>Topic Title</th><th>Created By</th><th>Msgs</th><th>Last Post</th></tr>
                 <%
                     for (TopicVO topic : topics) {
                         out.println("<tr>");

@@ -23,11 +23,12 @@ DROP TABLE IF EXISTS `board`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `board` (
-  `bid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `boardid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `title` varchar(32) NOT NULL,
   `description` varchar(128) NOT NULL,
-  PRIMARY KEY (`bid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`boardid`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,16 +40,16 @@ DROP TABLE IF EXISTS `message`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `message` (
   `messageid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `topic` int(10) unsigned NOT NULL,
-  `user` int(10) unsigned NOT NULL,
+  `topicid` int(10) unsigned NOT NULL,
+  `userid` int(10) unsigned NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `body` varchar(1024) NOT NULL,
   PRIMARY KEY (`messageid`),
-  KEY `message-user` (`user`),
-  KEY `message-topic` (`topic`),
-  CONSTRAINT `message-topic` FOREIGN KEY (`topic`) REFERENCES `topic` (`topicid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `message-user` FOREIGN KEY (`user`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `message-topic` (`topicid`),
+  KEY `message-userid` (`userid`),
+  CONSTRAINT `message-topic` FOREIGN KEY (`topicid`) REFERENCES `topic` (`topicid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `message-userid` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,16 +61,16 @@ DROP TABLE IF EXISTS `topic`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `topic` (
   `topicid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `board` int(10) unsigned NOT NULL,
-  `user` int(10) unsigned NOT NULL,
-  `title` varchar(64) NOT NULL,
+  `boardid` int(10) unsigned NOT NULL,
+  `userid` int(10) unsigned NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `title` varchar(64) NOT NULL,
   PRIMARY KEY (`topicid`) USING BTREE,
-  KEY `topic_board` (`board`),
-  KEY `topic-user` (`user`),
-  CONSTRAINT `topic-user` FOREIGN KEY (`user`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `topic_board` FOREIGN KEY (`board`) REFERENCES `board` (`bid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `topic-board` (`boardid`),
+  KEY `topic-user` (`userid`),
+  CONSTRAINT `topic-board` FOREIGN KEY (`boardid`) REFERENCES `board` (`boardid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `topic-user` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +107,7 @@ CREATE TABLE `user_login_history` (
   PRIMARY KEY (`id`),
   KEY `ulh_userid` (`userid`),
   CONSTRAINT `ulh_userid` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -118,4 +119,4 @@ CREATE TABLE `user_login_history` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-08-04 18:16:06
+-- Dump completed on 2011-08-04 22:32:56
