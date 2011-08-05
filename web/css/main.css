@@ -28,6 +28,7 @@ a {
 }
 
 #header {
+    height: 40px;
     color: dodgerblue;
     background: #111;
     border-bottom: 3px solid cornflowerblue;
@@ -37,9 +38,11 @@ a {
     padding: 0px 25px;
     font-family: 'Bowlby One SC', sans-serif;
     font-weight: normal;
+    float: right;
 }
 
 #header ul {
+    padding-top: 19px;
     padding-left: 30px;
 }
 
@@ -123,6 +126,7 @@ h2.center {
 #boards {
     margin-top: 10px;
     width: 100%;
+    border-spacing: 3px;
 }
 
 #boards th {
@@ -137,6 +141,6 @@ h2.center {
 
 #boards td {
     text-align: right;
-    background: #E4E4E4;
-    padding: 0 10px;
+    background: #DFDFDF;
+    padding: 2px 10px;
 }

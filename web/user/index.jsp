@@ -23,7 +23,7 @@
             <h2 class="center">Board List</h2>
             <table id="boards">
                 <tr>
-                    <th>Board</th><th>Topics</th><th>Msgs</th><th>Created</th>
+                    <th>Board Title</th><th>Topics</th><th>Msgs</th>
                 </tr>
                 <%
                     for (BoardVO board : boards) {
@@ -32,7 +32,6 @@
                         out.println(board.getDescription() + "</td>");
                         out.println("<td>" + board.getMessages() + "</td>");
                         out.println("<td>" + board.getTopics() + "</td>");
-                        out.println("<td>" + board.getTimestamp() + "</td>");
                         out.println("</tr>");
                     }
                 %>
