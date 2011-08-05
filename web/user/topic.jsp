@@ -1,5 +1,6 @@
-<%--
-    Document   : index.jsp
+<%-- 
+    Document   : view-topic
+    Created on : Aug 4, 2011, 8:15:34 PM
     Author     : steve
 --%>
 
@@ -13,8 +14,8 @@
     <body>
         <jsp:include page="header.jsp"/>
         <div id='content'>
-            <h2>Board List</h2>
-            <p>*boards go here*</p>
+            <h2>Template</h2>
+            <p>Text</p>
         </div>
         <jsp:include page="/footer.jsp"/>
     </body>

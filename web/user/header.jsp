@@ -7,7 +7,9 @@
 <div id='header'>
     <h1>Quintex</h1>
     <ul>
-        <li><a href="index.jsp">Home</a></li>
+        <li><a href="profile.jsp"><%= session.getAttribute("username")%></a></li>
+        <li><a href="index.jsp">Boards</a></li>
+        <li><a href="users.jsp">User List</a></li>
         <% if (((String) session.getAttribute("flags")).contains("a")) {%>
         <li><a href="../admin/index.jsp">Admin</a></li>
         <%}%>
