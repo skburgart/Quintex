@@ -37,7 +37,7 @@ public class TopicDBO extends DatabaseObject {
     }
 
     public ArrayList<MessageVO> getMessages(int topicid) {
-        String query = "SELECT * FROM message WHERE topicid=?";
+        String query = "SELECT userid, username, body, timestamp FROM message NATURAL JOIN user WHERE topicid=?";
 
         return parseMessages(select(query, topicid));
     }
@@ -70,11 +70,10 @@ public class TopicDBO extends DatabaseObject {
         try {
             while (rs.next()) {
                 MessageVO message = new MessageVO();
-                message.setMessageid(rs.getInt("messageid"));
-                message.setTopicid(rs.getInt("topicid"));
                 message.setUserid(rs.getInt("userid"));
                 message.setTimestamp(rs.getTimestamp("timestamp"));
                 message.setBody(rs.getString("body"));
+                message.setUsername(rs.getString("username"));
                 messages.add(message);
             }
         } catch (SQLException exp) {

@@ -34,18 +34,14 @@
         <div id='content'>
             <h2 class="center"><%= thisBoard.getTitle()%></h2>
             <h3 class="center"><%= thisTopic.getTitle()%></h3>
-            <table id="boards">
+            <table id="topic">
                 <%
-                /*
                     for (MessageVO message : messages) {
                         out.println("<tr>");
-                        out.println("<td class='board'><a href='topic.jsp?topicid=" + topic.getTopicid() + "'>" + topic.getTitle() + "</a></td>");
-                        out.println("<td>" + topic.getCreator() + "</td>");
-                        out.println("<td>" + topic.getMessages() + "</td>");
-                        out.println("<td>" + topic.getLatest() + "</td>");
+                        out.println("<th>By <a href='profile.jsp?userid=" + message.getUserid() + "'>" + message.getUsername() + "</a> at " + message.getTimestamp() + " </th></tr>");
+                        out.println("<tr><td>" + message.getBody() + "</td>");
                         out.println("</tr>");
                     }
-                    */
                 %>
             </table>
         </div>

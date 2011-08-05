@@ -12,6 +12,7 @@ public class MessageVO {
     private int topicid;
     private int userid;
     private Timestamp timestamp;
+    private String username;
     private String body;
 
     public int getMessageid() {
@@ -44,6 +45,14 @@ public class MessageVO {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     public String getBody() {
