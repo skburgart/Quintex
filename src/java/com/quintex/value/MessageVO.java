@@ -1,6 +1,7 @@
 package com.quintex.value;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -22,7 +23,7 @@ public class MessageVO {
     public void setMessageid(int messageid) {
         this.messageid = messageid;
     }
-    
+
     public int getTopicid() {
         return topicid;
     }
@@ -38,15 +39,15 @@ public class MessageVO {
     public void setUserid(int userid) {
         this.userid = userid;
     }
-    
-    public Timestamp getTimestamp() {
-        return timestamp;
+
+    public String getTimestamp() {
+        return new SimpleDateFormat("d/M/yyyy h:mma z").format(timestamp);
     }
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
-    
+
     public String getUsername() {
         return username;
     }
@@ -54,7 +55,7 @@ public class MessageVO {
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
     public String getBody() {
         return body;
     }
