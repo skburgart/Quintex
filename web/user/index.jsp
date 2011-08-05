@@ -21,14 +21,14 @@
         <jsp:include page="header.jsp"/>
         <div id='content'>
             <h2 class="center">Board List</h2>
-            <table id="boards">
+            <table id="board-list">
                 <tr>
                     <th>Board Title</th><th>Topics</th><th>Msgs</th>
                 </tr>
                 <%
                     for (BoardVO board : boards) {
                         out.println("<tr>");
-                        out.println("<td class='board'><a href='board.jsp?boardid=" + board.getBoardid() + "'>" + board.getTitle() + "</a><br />");
+                        out.println("<td class='left'><a href='board.jsp?boardid=" + board.getBoardid() + "'>" + board.getTitle() + "</a><br />");
                         out.println(board.getDescription() + "</td>");
                         out.println("<td>" + board.getTopics() + "</td>");
                         out.println("<td>" + board.getMessages() + "</td>");

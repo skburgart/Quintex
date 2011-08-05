@@ -27,13 +27,13 @@
         <jsp:include page="header.jsp"/>
         <div id='content'>
             <h2 class="center"><%= thisBoard.getTitle()%></h2>
-            <table id="boards">
-                <tr ><th colspan="4" style="background: #C4C4C4"><a href="new-topic.jsp?boardid=<%= thisBoard.getBoardid()%>">Create Topic</a></tr>
+            <table id="board-list">
+                <tr ><th class="options" colspan="4"><a href="new-topic.jsp?boardid=<%= thisBoard.getBoardid()%>">Create Topic</a></tr>
                 <tr><th>Topic Title</th><th>Created By</th><th>Msgs</th><th>Last Post</th></tr>
                 <%
                     for (TopicVO topic : topics) {
                         out.println("<tr>");
-                        out.println("<td class='board'><a href='topic.jsp?topicid=" + topic.getTopicid() + "'>" + topic.getTitle() + "</a></td>");
+                        out.println("<td class='left'><a href='topic.jsp?topicid=" + topic.getTopicid() + "'>" + topic.getTitle() + "</a></td>");
                         out.println("<td><a href='profile.jsp?" + topic.getUserid() + "'>" + topic.getCreator() + "</a></td>");
                         out.println("<td>" + topic.getMessages() + "</td>");
                         out.println("<td>" + topic.getLatest() + "</td>");

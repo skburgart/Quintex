@@ -35,7 +35,7 @@
             <h2 class="center"><%= thisBoard.getTitle()%></h2>
             <h3 class="center"><%= thisTopic.getTitle()%></h3>
             <table id="topic">
-                <tr ><th style="background: #C4C4C4;text-align: center;"><a href="new-message.jsp?topicid=<%= thisTopic.getTopicid()%>">Post Message</a></tr>
+                <tr ><th class="options"><a href="new-message.jsp?topicid=<%= thisTopic.getTopicid()%>">Post Message</a></tr>
                 <%
                     for (MessageVO message : messages) {
                         out.println("<tr>");
