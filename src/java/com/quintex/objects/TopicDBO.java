@@ -12,7 +12,18 @@ import java.util.ArrayList;
  */
 public class TopicDBO extends DatabaseObject {
 
-    public int add(int boardid, int userid, String title) {
+    public int create(int boardid, int userid, String title, String body) {
+        MessageDBO mdbo = new MessageDBO(this.conn);
+        int result = add(boardid, userid, title);
+
+        if (result > 0) {
+            result = mdbo.addWithTopic(userid, body);
+        }
+
+        return result;
+    }
+
+    private int add(int boardid, int userid, String title) {
         String query = "INSERT INTO topic(boardid, userid, title) VALUES(?, ?, ?)";
 
         return update(query, boardid, userid, title);

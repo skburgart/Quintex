@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
 
 /**
  *
@@ -20,7 +19,7 @@ public abstract class DatabaseObject {
             super(type);
         }
     }
-    private Connection conn = null;
+    protected Connection conn = null;
     private static String dbUrl = "jdbc:mysql://localhost/quintex";
     private static String dbUser = "quintex";
     private static String dbPassword = "quintex123";
@@ -33,6 +32,10 @@ public abstract class DatabaseObject {
             Logger.logError(exp);
         }
 
+    }
+    
+    protected DatabaseObject(Connection conn) {
+        this.conn = conn;
     }
 
     private PreparedStatement prepare(String query, Object... args) throws SQLException {
