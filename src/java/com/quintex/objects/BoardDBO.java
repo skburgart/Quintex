@@ -1,9 +1,11 @@
 package com.quintex.objects;
 
 import com.quintex.helpers.Logger;
+import com.quintex.value.BoardVO;
 import com.quintex.value.TopicVO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -18,19 +20,25 @@ public class BoardDBO extends DatabaseObject {
         return update(query, title, description);
     }
 
+    public ArrayList<BoardVO> getBoards() {
+        String query = "SELECT * FROM board";
+
+        return parseBoards(select(query));
+    }
+
     public ArrayList<TopicVO> getTopics(int boardid) {
         String query = "SELECT * FROM topic WHERE boardid=?";
 
         return parseTopics(select(query, boardid));
     }
 
-    public int numTopics(int boardid) {
+    private int numTopics(int boardid) {
         String query = "SELECT count(*) FROM topic WHERE boardid=?";
 
-        return count(query, boardid);
+        return aggregate(query, boardid);
     }
 
-    public int numMessages(int boardid) {
+    private int numMessages(int boardid) {
         int messages = 0;
         TopicDBO tdbo = new TopicDBO();
         ArrayList<TopicVO> topics = getTopics(boardid);
@@ -41,11 +49,32 @@ public class BoardDBO extends DatabaseObject {
 
         return messages;
     }
-
+    
     public int delete(int boardid) {
         String query = "DELETE FROM board WHERE boardid=?";
 
         return update(query, boardid);
+    }
+
+    private ArrayList<BoardVO> parseBoards(ResultSet rs) {
+        ArrayList<BoardVO> boards = new ArrayList<BoardVO>();
+
+        try {
+            while (rs.next()) {
+                BoardVO board = new BoardVO();
+                board.setBoardid(rs.getInt("boardid"));
+                board.setTimestamp(rs.getTimestamp("timestamp"));
+                board.setTitle(rs.getString("title"));
+                board.setDescription(rs.getString("description"));
+                board.setTopics(numTopics(board.getBoardid()));
+                board.setMessages(numMessages(board.getBoardid()));
+                boards.add(board);
+            }
+        } catch (SQLException exp) {
+            Logger.logError(exp);
+        }
+
+        return boards;
     }
 
     private ArrayList<TopicVO> parseTopics(ResultSet rs) {

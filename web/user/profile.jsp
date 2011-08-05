@@ -14,8 +14,8 @@
     <body>
         <jsp:include page="header.jsp"/>
         <div id='content'>
-            <h2>Template</h2>
-            <p>Text</p>
+            <h2>Profile</h2>
+            <p>*profile goes here*</p>
         </div>
         <jsp:include page="/footer.jsp"/>
     </body>

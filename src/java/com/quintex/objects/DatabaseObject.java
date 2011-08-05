@@ -92,7 +92,7 @@ public abstract class DatabaseObject {
         return result;
     }
 
-    protected int count(String query, Object... args) {
+    protected int aggregate(String query, Object... args) {
 
         int count = 0;
 

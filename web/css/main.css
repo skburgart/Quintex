@@ -68,6 +68,12 @@ a {
     background: #EEE;
 }
 
+#content a {
+    color: dodgerblue;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
 #content-center {
     width: 522px;
     margin: 10px auto;
@@ -108,4 +114,29 @@ a {
 }
 
 #form-table #submit {
+}
+
+h2.center {
+    text-align: center;
+}
+
+#boards {
+    margin-top: 10px;
+    width: 100%;
+}
+
+#boards th {
+    font-weight: bold;
+    text-align: center;
+    background: lightgrey;
+}
+
+#boards td.board {
+    text-align: left;
+}
+
+#boards td {
+    text-align: right;
+    background: #E4E4E4;
+    padding: 0 10px;
 }
