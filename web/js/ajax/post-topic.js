@@ -2,55 +2,48 @@ $(document).ready(function() {
     $('input[name=topic-title]').focus();
 })
 
-function register() {
-    var url = "register";
+function newTopic() {
+    var url = "post-topic";
     var data = {
-        "username": $('input[name=topic-title]'),
-        "email": $('input[name=topic-message]'),
-        "password1": $('input[name=register-password1]'),
-        "password2": $('input[name=register-password2]')
+        "topicid": $('input[name=topic-id]'),
+        "title": $('input[name=topic-title]'),
+        "message": $('#topic-message')
     }
 
-    if (validateRegistration(data)) {
-        $('.register-input').attr("disabled", "true");
-        ajaxRequest(url, {
-            "username": data.username.val(),
-            "email": data.email.val(),
-            "password": data.password1.val()
-        }, parseRegistration)
+    if (validateTopic(data)) {
+        alert("postin!");
+        
+        $('.topic-input').attr("disabled", "true");
+        postAjaxRequest(url, {
+            "topicid": data.topicid.val(),
+            "title": data.title.val(),
+            "message": data.message.val()
+        }, parseNewTopic)
     }
 }
 
-function validateRegistration(data) {
+function validateTopic(data) {
     var valid = false;
 
-    if (!data.username.val()) {
-        registerMessage("Enter username");
-        data.username.focus();
-    } else if (data.username.val().length < 3) {
-        registerMessage("Username must be at least 3 characters");
-        data.username.focus();
-    } else if (data.username.val().length > 32) {
-        registerMessage("Username must be at most 32 characters");
-        data.username.focus();
-    } else if (!validateUsername(data.username.val())) {
-        registerMessage("Username must start with a letter and not contain special characters");
-        data.username.focus();
-    } else if (!validateEmail(data.email.val())) {
-        registerMessage("Invalid email address");
-        data.email.focus();
-    } else if (!data.password1.val()) {
-        registerMessage("Enter password");
-        data.password1.focus();
-    } else if (!data.password2.val()) {
-        registerMessage("Enter password confirmation");
-        data.password2.focus();
-    } else if (data.password1.val() != data.password2.val()) {
-        registerMessage("Passwords do not match");
-        data.password1.focus();
-    } else if (data.password1.val().length < 6){
-        registerMessage("Password must be at least 6 characters");
-        data.password1.focus();
+    if (data.title.val().length < 6) {
+        topicMessage("Title must be at least 6 characters");
+        data.title.focus();
+    } else if (data.title.val().length > 64) {
+        topicMessage("Username must be at most 64 characters");
+        data.title.focus();
+    } else if (!validateTitle(data.title.val())) {
+        topicMessage("Invalid characters in title.");
+        data.title.focus();
+    } else if (data.message.val().length < 5) {
+        alert(data.message.val().length);
+        topicMessage("Message must be at least 5 characters");
+        data.message.focus();
+    } else if (data.message.val().length > 1024) {
+        topicMessage("Message must be at most 1024 characters");
+        data.message.focus();
+    } else if (!validateMessage(data.message.val())) {
+        topicMessage("Invalid characters in message.");
+        data.message.focus();
     } else {
         valid = true;
     }
@@ -58,25 +51,20 @@ function validateRegistration(data) {
     return valid;
 }
 
-function parseRegistration (xmlResponse) {
-    var response = $(xmlResponse).find("registerResponse").text();
+function parseNewTopic (xmlResponse) {
+    var response = $(xmlResponse).find("topicResponse").text();
 
-    if (response == 1) {
-        registerMessage("Success! You may now log in");
+    if (response != 0) {
+        window.location = "topic.jsp?topicid=" + response;
     } else {
         $('.register-input').removeAttr('disabled');
-        if (response == 2) {
-            registerMessage("That username already exists. Please choose another.");
-            $('input[name=register-username]').val("").focus();
-        } else {
-            registerMessage("Registration failed");
-        }
+        topicMessage("Topic creation failed");
     }
 
 }
 
-function registerMessage(message) {
-    $('#register-msg').text(message);
-    $('#register-msg').fadeIn("fast");
-    $('#register-msg').effect("highlight", {}, 1000);
+function topicMessage(message) {
+    $('#topic-msg').text(message);
+    $('#topic-msg').fadeIn("fast");
+    $('#topic-msg').effect("highlight", {}, 1000);
 }

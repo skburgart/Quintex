@@ -174,7 +174,7 @@ h2.center {
     padding: 2px 10px;
 }
 
-#new-topic-input {
+#topic-title {
     border: 2px solid cornflowerblue;
     height: 25px;
     width: 400px;
@@ -182,7 +182,11 @@ h2.center {
     font-size: 1.2em;
 }
 
-#message-textarea {
+#topic-message {
     font-size: 1.2em;   
     border: 2px solid cornflowerblue;
+}
+
+#topic-msg {
+    width: 500px;
 }

@@ -11,10 +11,27 @@
 <html>   
     <%
         BoardDBO bdbo = new BoardDBO();
+        int boardid = 0;
 
-        int boardid = Integer.parseInt(request.getParameter("boardid"));
+        String txtBoardid = request.getParameter("boardid");
+        if (txtBoardid == null) {
+            out.println("No board id");
+            return;
+        }
+
+        try {
+            boardid = Integer.parseInt(txtBoardid);
+        } catch (NumberFormatException nfe) {
+            out.println("Board id not a number");
+            return;
+        }
 
         BoardVO thisBoard = bdbo.get(boardid);
+
+        if (thisBoard == null) {
+            out.println("Board not found");
+            return;
+        }
     %>
     <head>
         <title>Quintex</title>
@@ -26,12 +43,14 @@
         <jsp:include page="header.jsp"/>
         <div id='content'>
             <form action="javascript:newTopic()">
+                <input type="hidden" name="topic-id" value="<%=boardid%>" />
                 <h2 class="center"><%= thisBoard.getTitle()%></h2>
                 <h3>Create New Topic</h3>
+                <div class="msg-error" id="topic-msg"></div>
                 <p>Topic Title</p>
-                <p><input name="topic-title" id="new-topic-input" type="text" /></p>
+                <p><input name="topic-title" class="topic-input" id="topic-title" type="text" /></p>
                 <p>Message</p>
-                <p><textarea name="topic-message" id="message-textarea" cols="50" rows="10" ></textarea></p>
+                <p><textarea wrap="soft" name="topic-message" class="topic-input" id="topic-message" cols="50" rows="9" ></textarea></p>
                 <p><input class="submit" type="submit" value="Post Topic" />
             </form>
         </div>
