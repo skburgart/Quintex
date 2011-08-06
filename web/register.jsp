@@ -11,7 +11,7 @@
         <title>Quintex</title>
         <jsp:include page="common-headers.jsp"/>
         <script src="js/form-validation.js"></script>
-        <script src="js/ajax/post-topic.js"></script>
+        <script src="js/ajax/register.js"></script>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
