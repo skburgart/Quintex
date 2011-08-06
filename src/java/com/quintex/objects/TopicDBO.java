@@ -37,7 +37,7 @@ public class TopicDBO extends DatabaseObject {
     }
 
     public ArrayList<MessageVO> getMessages(int topicid) {
-        String query = "SELECT userid, username, body, timestamp FROM message NATURAL JOIN user WHERE topicid=?";
+        String query = "SELECT userid, username, body, timestamp FROM message NATURAL JOIN user WHERE topicid=? ORDER BY timestamp DESC";
 
         return parseMessages(select(query, topicid));
     }

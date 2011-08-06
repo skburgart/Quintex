@@ -39,9 +39,6 @@ function validateTopic(data) {
     } else if (data.message.val().length > 1024) {
         topicMessage("Message must be at most 1024 characters");
         data.message.focus();
-    } else if (!validateMessage(data.message.val())) {
-        topicMessage("Invalid characters in message.");
-        data.message.focus();
     } else {
         valid = true;
     }
