@@ -5,17 +5,15 @@ $(document).ready(function() {
 function newTopic() {
     var url = "post-topic";
     var data = {
-        "topicid": $('input[name=topic-id]'),
+        "boardid": $('input[name=board-id]'),
         "title": $('input[name=topic-title]'),
         "message": $('#topic-message')
     }
 
     if (validateTopic(data)) {
-        alert("postin!");
-        
         $('.topic-input').attr("disabled", "true");
         postAjaxRequest(url, {
-            "topicid": data.topicid.val(),
+            "boardid": data.boardid.val(),
             "title": data.title.val(),
             "message": data.message.val()
         }, parseNewTopic)

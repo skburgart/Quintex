@@ -43,7 +43,7 @@
         <jsp:include page="header.jsp"/>
         <div id='content'>
             <form action="javascript:newTopic()">
-                <input type="hidden" name="topic-id" value="<%=boardid%>" />
+                <input type="hidden" name="board-id" value="<%=boardid%>" />
                 <h2 class="center"><%= thisBoard.getTitle()%></h2>
                 <h3>Create New Topic</h3>
                 <div class="msg-error" id="topic-msg"></div>

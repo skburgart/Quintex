@@ -1,5 +1,5 @@
 function validateTitle(title) {
-    var regex = /^[A-Za-z0-9.,!@#$%^&*()-_=+]+$/;
+    var regex = /^[A-Za-z0-9 ]+$/;
     if (regex.test(title)){
         return true;
     }
@@ -8,7 +8,7 @@ function validateTitle(title) {
 }
 
 function validateMessage(message) {
-    var regex = /^[A-Za-z0-9.,!@#$%^&*()-_=+\n]+$/;
+    var regex = /^[A-Za-z0-9\n ]+$/;
     if (regex.test(message)){
         return true;
     }
