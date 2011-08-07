@@ -36,7 +36,7 @@ public class UserDBO extends DatabaseObject {
 
     public UserVO get(int userid) {
 
-        String query = "SELECT * FROM user WHERE userid=?";
+        String query = "SELECT *, (SELECT COUNT(*) FROM topic WHERE userid=u.userid) as topics, (SELECT COUNT(*) FROM message WHERE userid=u.userid) as messages FROM user AS u WHERE userid=?";
         ArrayList<UserVO> users = parseResultSet(select(query, userid));
 
         if (users.isEmpty()) {
@@ -46,6 +46,15 @@ public class UserDBO extends DatabaseObject {
         return users.get(0);
     }
 
+    public ArrayList<UserVO> getAll() {
+        ArrayList<UserVO> users = new ArrayList<UserVO>();
+        
+        String query = "SELECT *, (SELECT COUNT(*) FROM topic WHERE userid=u.userid) as topics, (SELECT COUNT(*) FROM message WHERE userid=u.userid) as messages FROM user AS u";
+        users = parseResultSet(select(query));
+       
+        return users;
+    }
+    
     public UserVO getFromUsername(String username) {
 
         String query = "SELECT * FROM user WHERE username=?";
@@ -151,6 +160,8 @@ public class UserDBO extends DatabaseObject {
                 tmp.setSignature(rs.getString("signature"));
                 tmp.setRegistered(rs.getTimestamp("registered"));
                 tmp.setFlags(rs.getString("flags"));
+                tmp.setTopics(rs.getInt("topics"));
+                tmp.setMessages(rs.getInt("messages"));
 
                 users.add(tmp);
             }

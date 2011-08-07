@@ -15,6 +15,8 @@ public class UserVO {
     private String signature;
     private Timestamp registered;
     private String flags;
+    private int topics;
+    private int messages;
 
     public int getUserid() {
         return userid;
@@ -70,5 +72,21 @@ public class UserVO {
 
     public void setFlags(String flags) {
         this.flags = flags;
+    }
+
+    public int getTopics() {
+        return topics;
+    }
+
+    public void setTopics(int topics) {
+        this.topics = topics;
+    }
+
+    public int getMessages() {
+        return messages;
+    }
+
+    public void setMessages(int messages) {
+        this.messages = messages;
     }
 }
