@@ -21,11 +21,14 @@ public class ResetPassword extends HttpServlet {
 
         Logger.log("Reset Password Servlet");
 
+        UserDBO udbo = new UserDBO();
+        int result = 0;
+        
         String username = request.getParameter("username");
 
-        UserDBO udbo = new UserDBO();
-
-        int result = udbo.resetPassword(username);
+        if (username != null) {
+            result = udbo.resetPassword(username);
+        }
 
         response.setContentType("text/xml");
         response.setHeader("Cache-Control", "no-cache");

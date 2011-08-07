@@ -30,7 +30,10 @@ public class Register extends HttpServlet {
         String email = request.getParameter("email");
 
 
-        if (password.length() >= 6
+        if (username != null
+                && password != null
+                && email != null
+                && password.length() >= 6
                 && username.length() <= 32
                 && username.length() >= 3
                 && Regex.match(Regex.email, email)

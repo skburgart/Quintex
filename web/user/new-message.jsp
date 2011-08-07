@@ -16,9 +16,27 @@
         BoardDBO bdbo = new BoardDBO();
         TopicDBO tdbo = new TopicDBO();
 
-        int topicid = Integer.parseInt(request.getParameter("topicid"));
+        int topicid;
+        String txtTopicid = request.getParameter("topicid");
+        if (txtTopicid == null) {
+            out.println("No topic id");
+            return;
+        }
+
+        try {
+            topicid = Integer.parseInt(txtTopicid);
+        } catch (NumberFormatException nfe) {
+            out.println("Topic id not a number");
+            return;
+        }
+        
         TopicVO thisTopic = tdbo.get(topicid);
 
+        if (thisTopic == null) {
+            out.println("Topic not found");
+            return;
+        }
+        
         int boardid = thisTopic.getBoardid();
         BoardVO thisBoard = bdbo.get(boardid);
 

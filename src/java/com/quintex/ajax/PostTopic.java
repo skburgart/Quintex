@@ -1,7 +1,6 @@
 package com.quintex.ajax;
 
 import com.quintex.helpers.Logger;
-import com.quintex.helpers.Regex;
 import com.quintex.objects.TopicDBO;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -29,16 +28,20 @@ public class PostTopic extends HttpServlet {
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpSession session = httpReq.getSession(true);
 
-        int userid = (Integer)session.getAttribute("userid");
-        int boardid = Integer.parseInt(request.getParameter("boardid"));
-        String title = request.getParameter("title");
-        String message = request.getParameter("message");
-        
-        if (title.length() >= 6
-                && title.length() <= 64
-                && message.length() >= 5
-                && message.length() <= 1024) {
-            result = tdbo.create(boardid, userid, title, message);
+        try {
+            int userid = (Integer) session.getAttribute("userid");
+            int boardid = Integer.parseInt(request.getParameter("boardid"));
+            String title = request.getParameter("title");
+            String message = request.getParameter("message");
+
+            if (title != null && message != null
+                    && title.length() >= 6
+                    && title.length() <= 64
+                    && message.length() >= 5
+                    && message.length() <= 1024) {
+                result = tdbo.create(boardid, userid, title, message);
+            }
+        } catch (NumberFormatException exp) {
         }
 
         response.setContentType("text/xml");

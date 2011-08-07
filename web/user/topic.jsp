@@ -13,19 +13,37 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <%
+        BoardDBO bdbo = new BoardDBO();
+        TopicDBO tdbo = new TopicDBO();
+
+        int topicid;
+        String txtTopicid = request.getParameter("topicid");
+        if (txtTopicid == null) {
+            out.println("No topic id");
+            return;
+        }
+
+        try {
+            topicid = Integer.parseInt(txtTopicid);
+        } catch (NumberFormatException nfe) {
+            out.println("Topic id not a number");
+            return;
+        }
+
+        TopicVO thisTopic = tdbo.get(topicid);
+
+        if (thisTopic == null) {
+            out.println("Topic not found");
+            return;
+        }
+
+        int boardid = thisTopic.getBoardid();
+        BoardVO thisBoard = bdbo.get(boardid);
+
+        ArrayList<MessageVO> messages = tdbo.getMessages(topicid);
+    %>
     <head>    
-        <%        
-            BoardDBO bdbo = new BoardDBO();
-            TopicDBO tdbo = new TopicDBO();
-
-            int topicid = Integer.parseInt(request.getParameter("topicid"));
-            TopicVO thisTopic = tdbo.get(topicid);
-            
-            int boardid = thisTopic.getBoardid();
-            BoardVO thisBoard = bdbo.get(boardid);
-
-            ArrayList<MessageVO> messages = tdbo.getMessages(topicid);
-        %>
         <title>Quintex</title>
         <jsp:include page="/common-headers.jsp"/>
     </head>

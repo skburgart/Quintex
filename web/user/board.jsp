@@ -13,8 +13,19 @@
 <html>
     <%
         BoardDBO bdbo = new BoardDBO();
+        int boardid;
+        String txtBoardid = request.getParameter("boardid");
+        if (txtBoardid == null) {
+            out.println("No board id");
+            return;
+        }
 
-        int boardid = Integer.parseInt(request.getParameter("boardid"));
+        try {
+            boardid = Integer.parseInt(txtBoardid);
+        } catch (NumberFormatException nfe) {
+            out.println("Board id not a number");
+            return;
+        }
 
         BoardVO thisBoard = bdbo.get(boardid);
         ArrayList<TopicVO> topics = bdbo.getTopics(boardid);
