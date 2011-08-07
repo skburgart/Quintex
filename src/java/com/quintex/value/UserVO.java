@@ -12,6 +12,7 @@ public class UserVO {
     private String username;
     private String email;
     private String password;
+    private String signature;
     private Timestamp registered;
     private String flags;
 
@@ -35,16 +36,24 @@ public class UserVO {
         return password;
     }
 
-    public void setEmail(String email ) {
-        this.email = email;
+    public void setPassword(String password ) {
+        this.password = password;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature ) {
+        this.signature = signature;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setPassword(String password ) {
-        this.password = password;
+    public void setEmail(String email ) {
+        this.email = email;
     }
 
     public Timestamp getRegistered() {

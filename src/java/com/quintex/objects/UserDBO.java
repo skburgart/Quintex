@@ -148,6 +148,7 @@ public class UserDBO extends DatabaseObject {
                 tmp.setUsername(rs.getString("username"));
                 tmp.setEmail(rs.getString("email"));
                 tmp.setPassword(rs.getString("password"));
+                tmp.setSignature(rs.getString("signature"));
                 tmp.setRegistered(rs.getTimestamp("registered"));
                 tmp.setFlags(rs.getString("flags"));
 
