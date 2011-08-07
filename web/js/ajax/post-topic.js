@@ -29,9 +29,6 @@ function validateTopic(data) {
     } else if (data.title.val().length > 64) {
         topicMessage("Username must be at most 64 characters");
         data.title.focus();
-    } else if (!validateTitle(data.title.val())) {
-        topicMessage("Invalid characters in title.");
-        data.title.focus();
     } else if (data.message.val().length < 5) {
         alert(data.message.val().length);
         topicMessage("Message must be at least 5 characters");

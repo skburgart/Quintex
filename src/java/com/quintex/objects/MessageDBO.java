@@ -19,26 +19,18 @@ public class MessageDBO extends DatabaseObject {
     public int add(int topicid, int userid, String body) {
         String query = "INSERT INTO message(topicid, userid, body) VALUES(?, ?, ?)";
 
-        return update(query, topicid, userid, filterBody(body));
+        return update(query, topicid, userid, body);
     }
 
     public int addWithTopic(int userid, String body) {
         int topicid = aggregate("SELECT LAST_INSERT_ID()");
         String query = "INSERT INTO message(topicid, userid, body) VALUES(?, ?, ?)";
 
-        if (update(query, topicid, userid, filterBody(body)) > 0) {
+        if (update(query, topicid, userid, body) > 0) {
             return topicid;
         }
 
         return 0;
-    }
-    
-    private String filterBody(String body) {
-        body = body.replace("<", "&lt;");
-        body = body.replace(">", "&gt;");
-        body = body.replace("\n", "<br />");
-        
-        return body;
     }
 
     public int delete(int messageid) {

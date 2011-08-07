@@ -22,13 +22,13 @@ public class Register extends HttpServlet {
 
         Logger.log("Register Servlet");
 
+        UserDBO udbo = new UserDBO();
         int result = 0;
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-        UserDBO udbo = new UserDBO();
 
         if (password.length() >= 6
                 && username.length() <= 32
@@ -36,10 +36,7 @@ public class Register extends HttpServlet {
                 && Regex.match(Regex.email, email)
                 && Regex.match(Regex.username, username)) {
             result = udbo.add(username, password, email);
-        } else {
-            result = 0;
-        }
-
+        } 
 
         response.setContentType("text/xml");
         response.setHeader("Cache-Control", "no-cache");

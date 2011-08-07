@@ -1,6 +1,7 @@
 package com.quintex.ajax;
 
 import com.quintex.helpers.Logger;
+import com.quintex.helpers.Regex;
 import com.quintex.objects.TopicDBO;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -23,6 +24,7 @@ public class PostTopic extends HttpServlet {
         Logger.log("Post Topic Servlet");
 
         TopicDBO tdbo = new TopicDBO();
+        int result = 0;
 
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpSession session = httpReq.getSession(true);
@@ -31,8 +33,13 @@ public class PostTopic extends HttpServlet {
         int boardid = Integer.parseInt(request.getParameter("boardid"));
         String title = request.getParameter("title");
         String message = request.getParameter("message");
-
-        int result = tdbo.create(boardid, userid, title, message);
+        
+        if (title.length() >= 6
+                && title.length() <= 64
+                && message.length() >= 5
+                && message.length() <= 1024) {
+            result = tdbo.create(boardid, userid, title, message);
+        }
 
         response.setContentType("text/xml");
         response.setHeader("Cache-Control", "no-cache");

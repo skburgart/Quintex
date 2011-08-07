@@ -57,9 +57,17 @@ public class MessageVO {
     }
 
     public String getBody() {
+        return filterBody(body);
+    }
+    
+    private String filterBody(String body) {
+        body = body.replace("<", "&lt;");
+        body = body.replace(">", "&gt;");
+        body = body.replace("\n", "<br />");
+        
         return body;
     }
-
+    
     public void setBody(String body) {
         this.body = body;
     }

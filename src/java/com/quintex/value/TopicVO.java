@@ -63,7 +63,14 @@ public class TopicVO {
     }
 
     public String getTitle() {
-        return title;
+        return filterTitle(title);
+    }
+
+    private String filterTitle(String body) {
+        body = body.replace("<", "&lt;");
+        body = body.replace(">", "&gt;");
+
+        return body;
     }
 
     public void setTitle(String title) {
