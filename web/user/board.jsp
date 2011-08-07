@@ -28,7 +28,7 @@
         <div id='content'>
             <h2 class="center"><%= thisBoard.getTitle()%></h2>
             <table id="board-list">
-                <tr ><th class="options" colspan="4"><a href="new-topic.jsp?boardid=<%= thisBoard.getBoardid()%>">Create Topic</a></tr>
+                <tr ><th class="options" colspan="4"><a href="index.jsp"/>Board List</a> - <a href="new-topic.jsp?boardid=<%= thisBoard.getBoardid()%>">Create Topic</a></tr>
                 <tr><th>Topic Title</th><th>Created By</th><th>Msgs</th><th>Last Post</th></tr>
                 <%
                     for (TopicVO topic : topics) {
