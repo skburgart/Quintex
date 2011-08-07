@@ -8,11 +8,11 @@ import java.sql.Connection;
  */
 public class MessageDBO extends DatabaseObject {
 
-    MessageDBO() {
+    public MessageDBO() {
         super();
     }
 
-    MessageDBO(Connection conn) {
+    public MessageDBO(Connection conn) {
         super(conn);
     }
 

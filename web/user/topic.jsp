@@ -39,7 +39,7 @@
                 <%
                     for (MessageVO message : messages) {
                         out.println("<tr>");
-                        out.println("<th>By <a href='profile.jsp?userid=" + message.getUserid() + "'>" + message.getUsername() + "</a> at " + message.getTimestamp() + " </th></tr>");
+                        out.println("<th><a href='profile.jsp?userid=" + message.getUserid() + "'>" + message.getUsername() + "</a> at " + message.getTimestamp() + " </th></tr>");
                         out.println("<tr><td>" + message.getBody() + "</td>");
                         out.println("</tr>");
                     }

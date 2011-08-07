@@ -182,11 +182,11 @@ h2.center {
     font-size: 1.2em;
 }
 
-#topic-message {
+#message-box {
     font-size: 1.2em;   
     border: 2px solid cornflowerblue;
 }
 
-#topic-msg {
+#post-msg {
     width: 500px;
 }

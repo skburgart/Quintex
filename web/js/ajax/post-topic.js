@@ -7,7 +7,7 @@ function newTopic() {
     var data = {
         "boardid": $('input[name=board-id]'),
         "title": $('input[name=topic-title]'),
-        "message": $('#topic-message')
+        "message": $('#message-box')
     }
 
     if (validateTopic(data)) {
@@ -30,7 +30,6 @@ function validateTopic(data) {
         topicMessage("Username must be at most 64 characters");
         data.title.focus();
     } else if (data.message.val().length < 5) {
-        alert(data.message.val().length);
         topicMessage("Message must be at least 5 characters");
         data.message.focus();
     } else if (data.message.val().length > 1024) {
@@ -49,14 +48,14 @@ function parseNewTopic (xmlResponse) {
     if (response != 0) {
         window.location = "topic.jsp?topicid=" + response;
     } else {
-        $('.register-input').removeAttr('disabled');
+        $('.topic-input').removeAttr('disabled');
         topicMessage("Topic creation failed");
     }
 
 }
 
 function topicMessage(message) {
-    $('#topic-msg').text(message);
-    $('#topic-msg').fadeIn("fast");
-    $('#topic-msg').effect("highlight", {}, 1000);
+    $('#post-msg').text(message);
+    $('#post-msg').fadeIn("fast");
+    $('#post-msg').effect("highlight", {}, 1000);
 }

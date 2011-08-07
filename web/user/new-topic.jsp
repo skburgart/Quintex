@@ -46,12 +46,12 @@
                 <input type="hidden" name="board-id" value="<%=boardid%>" />
                 <h2 class="center"><%= thisBoard.getTitle()%></h2>
                 <h3>Create New Topic</h3>
-                <div class="msg-error" id="topic-msg"></div>
+                <div class="msg-error" id="post-msg"></div>
                 <p>Topic Title</p>
                 <p><input name="topic-title" class="topic-input" id="topic-title" type="text" /></p>
                 <p>Message</p>
-                <p><textarea wrap="soft" name="topic-message" class="topic-input" id="topic-message" cols="50" rows="9" ></textarea></p>
-                <p><input class="submit" type="submit" value="Post Topic" />
+                <p><textarea wrap="soft" name="topic-message" class="topic-input" id="message-box" cols="50" rows="9" ></textarea></p>
+                <p><input class="submit topic-input" type="submit" value="Post Topic" />
             </form>
         </div>
         <jsp:include page="/footer.jsp"/>
