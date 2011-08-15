@@ -1,6 +1,7 @@
 package com.quintex.value;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -30,7 +31,7 @@ public class UserVO {
         return username;
     }
 
-    public void setUsername(String username ) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -38,15 +39,19 @@ public class UserVO {
         return password;
     }
 
-    public void setPassword(String password ) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
     public String getSignature() {
+        if (signature == null) {
+            return "";
+        }
+        
         return signature;
     }
 
-    public void setSignature(String signature ) {
+    public void setSignature(String signature) {
         this.signature = signature;
     }
 
@@ -54,15 +59,15 @@ public class UserVO {
         return email;
     }
 
-    public void setEmail(String email ) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public Timestamp getRegistered() {
-        return registered;
+    public String getRegistered() {
+        return new SimpleDateFormat("d/M/yyyy h:mma z").format(registered);
     }
 
-    public void setRegistered(Timestamp registered ) {
+    public void setRegistered(Timestamp registered) {
         this.registered = registered;
     }
 
