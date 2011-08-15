@@ -38,7 +38,7 @@ public class PostTopic extends HttpServlet {
                     && title.length() >= 6
                     && title.length() <= 64
                     && message.length() >= 5
-                    && message.length() <= 1024) {
+                    && message.length() <= 2048) {
                 result = tdbo.create(boardid, userid, title, message);
             }
         } catch (NumberFormatException exp) {

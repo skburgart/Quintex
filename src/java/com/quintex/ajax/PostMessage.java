@@ -35,7 +35,7 @@ public class PostMessage extends HttpServlet {
             
             if (message != null
                     && message.length() >= 5
-                    && message.length() <= 1024) {
+                    && message.length() <= 2048) {
                 result = mdbo.add(topicid, userid, message);
             }
             

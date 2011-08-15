@@ -24,8 +24,8 @@ function validateMessage(data) {
     if (data.message.val().length < 5) {
         msgMessage("Message must be at least 5 characters");
         data.message.focus();
-    } else if (data.message.val().length > 1024) {
-        msgMessage("Message must be at most 1024 characters");
+    } else if (data.message.val().length > 2048) {
+        msgMessage("Message must be at most 2048 characters");
         data.message.focus();
     } else {
         valid = true;

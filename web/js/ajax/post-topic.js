@@ -32,8 +32,8 @@ function validateTopic(data) {
     } else if (data.message.val().length < 5) {
         topicMessage("Message must be at least 5 characters");
         data.message.focus();
-    } else if (data.message.val().length > 1024) {
-        topicMessage("Message must be at most 1024 characters");
+    } else if (data.message.val().length > 2048) {
+        topicMessage("Message must be at most 2048 characters");
         data.message.focus();
     } else {
         valid = true;
