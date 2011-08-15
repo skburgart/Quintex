@@ -4,6 +4,7 @@
     Author     : steve
 --%>
 
+<%@page import="com.quintex.objects.TopicDBO"%>
 <%@page import="com.quintex.value.TopicVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.quintex.value.BoardVO"%>
@@ -13,6 +14,8 @@
 <html>
     <%
         BoardDBO bdbo = new BoardDBO();
+        TopicDBO tdbo = new TopicDBO();
+        
         int boardid;
         String txtBoardid = request.getParameter("boardid");
         if (txtBoardid == null) {
@@ -28,7 +31,7 @@
         }
 
         BoardVO thisBoard = bdbo.get(boardid);
-        ArrayList<TopicVO> topics = bdbo.getTopics(boardid);
+        ArrayList<TopicVO> topics = tdbo.getFromBoardid(boardid);
     %>
     <head>
         <title>Quintex</title>

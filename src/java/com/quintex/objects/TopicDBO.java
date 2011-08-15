@@ -1,7 +1,6 @@
 package com.quintex.objects;
 
 import com.quintex.helpers.Logger;
-import com.quintex.value.MessageVO;
 import com.quintex.value.TopicVO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,13 +11,25 @@ import java.util.ArrayList;
  * @author Steven Burgart
  */
 public class TopicDBO extends DatabaseObject {
-    
+
     public TopicVO get(int topicid) {
         String query = "SELECT * FROM topic WHERE topicid=?";
 
-        return parseTopic(select(query, topicid));
+        ArrayList<TopicVO> topics = parseResultSet(select(query, topicid));
+
+        if (!topics.isEmpty()) {
+            return topics.get(0);
+        }
+
+        return null;
     }
-    
+
+    public ArrayList<TopicVO> getFromBoardid(int boardid) {
+        String query = "SELECT topicid, userid, username AS creator, title, (SELECT COUNT(*) FROM message WHERE topicid=t.topicid) AS messages, (SELECT MAX(timestamp) FROM message WHERE topicid=t.topicid) AS latest FROM topic AS t NATURAL JOIN user WHERE boardid=? ORDER BY latest DESC";
+
+        return parseResultSet(select(query, boardid));
+    }
+
     public int create(int boardid, int userid, String title, String body) {
         MessageDBO mdbo = new MessageDBO(this.conn);
         int result = add(boardid, userid, title);
@@ -36,51 +47,60 @@ public class TopicDBO extends DatabaseObject {
         return update(query, boardid, userid, title);
     }
 
-    public ArrayList<MessageVO> getMessages(int topicid) {
-        String query = "SELECT userid, username, body, timestamp FROM message NATURAL JOIN user WHERE topicid=? ORDER BY timestamp ASC";
-
-        return parseMessages(select(query, topicid));
-    }
-
     public int delete(int topicid) {
         String query = "DELETE FROM topic WHERE topicid=?";
 
         return update(query, topicid);
     }
 
-    private TopicVO parseTopic(ResultSet rs) {
-        TopicVO topic = new TopicVO();
-        
-        try {
-            if (rs.first()) {
-                topic.setTitle(rs.getString("title"));
-                topic.setTopicid(rs.getInt("topicid"));
-                topic.setBoardid(rs.getInt("boardid"));
-            } else
-                topic = null;
-        } catch (SQLException exp) {
-            Logger.logError(exp);
-        }
-        
-        return topic;
-    }
-    
-    private ArrayList<MessageVO> parseMessages(ResultSet rs) {
-        ArrayList<MessageVO> messages = new ArrayList<MessageVO>();
+    private ArrayList<TopicVO> parseResultSet(ResultSet rs) {
+        ArrayList<TopicVO> topics = new ArrayList<TopicVO>();
 
         try {
             while (rs.next()) {
-                MessageVO message = new MessageVO();
-                message.setUserid(rs.getInt("userid"));
-                message.setTimestamp(rs.getTimestamp("timestamp"));
-                message.setBody(rs.getString("body"));
-                message.setUsername(rs.getString("username"));
-                messages.add(message);
+                TopicVO topic = new TopicVO();
+                try {
+                    topic.setTopicid(rs.getInt("topicid"));
+                } catch (Exception exp) {
+                }
+                try {
+                    topic.setBoardid(rs.getInt("boardid"));
+                } catch (Exception exp) {
+                }
+                try {
+                    topic.setUserid(rs.getInt("userid"));
+                } catch (Exception exp) {
+                }
+                try {
+                    topic.setTitle(rs.getString("title"));
+                } catch (Exception exp) {
+                }
+                try {
+                    topic.setTimestamp(rs.getTimestamp("timestamp"));
+                } catch (Exception exp) {
+                }
+                try {
+                    topic.setLatest(rs.getTimestamp("latest"));
+                } catch (Exception exp) {
+                }
+                try {
+                    topic.setTitle(rs.getString("title"));
+                } catch (Exception exp) {
+                }
+                try {
+                    topic.setCreator(rs.getString("creator"));
+                } catch (Exception exp) {
+                }
+                try {
+                    topic.setMessages(rs.getInt("messages"));
+                } catch (Exception exp) {
+                }
+                topics.add(topic);
             }
         } catch (SQLException exp) {
             Logger.logError(exp);
         }
 
-        return messages;
+        return topics;
     }
 }

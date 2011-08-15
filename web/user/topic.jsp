@@ -4,6 +4,7 @@
     Author     : steve
 --%>
 
+<%@page import="com.quintex.objects.MessageDBO"%>
 <%@page import="com.quintex.value.BoardVO"%>
 <%@page import="com.quintex.objects.BoardDBO"%>
 <%@page import="com.quintex.value.MessageVO"%>
@@ -16,6 +17,7 @@
     <%
         BoardDBO bdbo = new BoardDBO();
         TopicDBO tdbo = new TopicDBO();
+        MessageDBO mdbo = new MessageDBO();
 
         int topicid;
         String txtTopicid = request.getParameter("topicid");
@@ -41,7 +43,7 @@
         int boardid = thisTopic.getBoardid();
         BoardVO thisBoard = bdbo.get(boardid);
 
-        ArrayList<MessageVO> messages = tdbo.getMessages(topicid);
+        ArrayList<MessageVO> messages = mdbo.getFromTopicid(topicid);
     %>
     <head>    
         <title>Quintex</title>

@@ -48,13 +48,13 @@ public class UserDBO extends DatabaseObject {
 
     public ArrayList<UserVO> getAll() {
         ArrayList<UserVO> users = new ArrayList<UserVO>();
-        
+
         String query = "SELECT *, (SELECT COUNT(*) FROM topic WHERE userid=u.userid) as topics, (SELECT COUNT(*) FROM message WHERE userid=u.userid) as messages FROM user AS u";
         users = parseResultSet(select(query));
-       
+
         return users;
     }
-    
+
     public UserVO getFromUsername(String username) {
 
         String query = "SELECT * FROM user WHERE username=?";
@@ -113,16 +113,16 @@ public class UserDBO extends DatabaseObject {
             char randomChar = '\0';
             switch (randomType) {
                 case 0:
-                    randomChar = (char)('0' + (int) (Math.random() * 10));
+                    randomChar = (char) ('0' + (int) (Math.random() * 10));
                     break;
                 case 1:
-                    randomChar = (char)('a' + (int) (Math.random() * 10));
+                    randomChar = (char) ('a' + (int) (Math.random() * 10));
                     break;
                 case 2:
-                    randomChar = (char)('A' + (int) (Math.random() * 10));
+                    randomChar = (char) ('A' + (int) (Math.random() * 10));
                     break;
             }
-            
+
             sb.append(randomChar);
         }
 
@@ -153,15 +153,42 @@ public class UserDBO extends DatabaseObject {
             while (rs.next()) {
                 UserVO tmp = new UserVO();
 
-                tmp.setUserid(rs.getInt("userid"));
-                tmp.setUsername(rs.getString("username"));
-                tmp.setEmail(rs.getString("email"));
-                tmp.setPassword(rs.getString("password"));
-                tmp.setSignature(rs.getString("signature"));
-                tmp.setRegistered(rs.getTimestamp("registered"));
-                tmp.setFlags(rs.getString("flags"));
-                tmp.setTopics(rs.getInt("topics"));
-                tmp.setMessages(rs.getInt("messages"));
+                try {
+                    tmp.setUserid(rs.getInt("userid"));
+                } catch (Exception exp) {
+                }
+                try {
+                    tmp.setUsername(rs.getString("username"));
+                } catch (Exception exp) {
+                }
+                try {
+                    tmp.setEmail(rs.getString("email"));
+                } catch (Exception exp) {
+                }
+                try {
+                    tmp.setPassword(rs.getString("password"));
+                } catch (Exception exp) {
+                }
+                try {
+                    tmp.setSignature(rs.getString("signature"));
+                } catch (Exception exp) {
+                }
+                try {
+                    tmp.setRegistered(rs.getTimestamp("registered"));
+                } catch (Exception exp) {
+                }
+                try {
+                    tmp.setFlags(rs.getString("flags"));
+                } catch (Exception exp) {
+                }
+                try {
+                    tmp.setTopics(rs.getInt("topics"));
+                } catch (Exception exp) {
+                }
+                try {
+                    tmp.setMessages(rs.getInt("messages"));
+                } catch (Exception exp) {
+                }
 
                 users.add(tmp);
             }

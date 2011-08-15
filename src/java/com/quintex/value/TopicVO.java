@@ -55,7 +55,7 @@ public class TopicVO {
     }
 
     public Timestamp getTimestamp() {
-        return latest;
+        return timestamp;
     }
 
     public void setTimestamp(Timestamp timestamp) {

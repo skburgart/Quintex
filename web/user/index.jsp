@@ -11,7 +11,7 @@
 <html>   
     <%
         BoardDBO bdbo = new BoardDBO();
-        ArrayList<BoardVO> boards = bdbo.getBoards();
+        ArrayList<BoardVO> boards = bdbo.getAll();
     %>
     <head>
         <title>Quintex</title>
