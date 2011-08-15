@@ -41,14 +41,18 @@
     <body>
         <jsp:include page="header.jsp"/>
         <div id='content'>
-            <h2>Profile For <%=user.getUsername()%></h2>
-            <table>
-                <tr><td>Userid</td><td><%=user.getUserid() %></td></tr>
-                <tr><td>Email</td><td><%=user.getEmail() %></td></tr>
-                <tr><td>Registered</td><td><%=user.getRegistered() %></td></tr>
-                <tr><td>Signature</td><td><%=user.getSignature() %></td></tr>
-                <tr><td>Topics Created</td><td><%=user.getTopics() %></td></tr>
-                <tr><td>Messages Posted</td><td><%=user.getMessages() %></td></tr>
+            <h2 class="center">Profile For <%=user.getUsername()%></h2>
+            <table id="profile-table">
+                <tr><td class="left">Userid</td><td><%=user.getUserid()%></td></tr>
+                <tr><td class="left">Email</td><td><%=user.getEmail()%></td></tr>
+                <tr><td class="left">Registered</td><td><%=user.getRegistered()%></td></tr>
+                <tr><td class="left">Signature</td><td><%=user.getSignature()%></td></tr>
+                <tr><td class="left">Topics Created</td><td><%=user.getTopics()%></td></tr>
+                <tr><td class="left">Messages Posted</td><td><%=user.getMessages()%></td></tr>
+                <%if (userid == (Integer)session.getAttribute("userid")) { %>
+                <tr><th colspan="2">Options</th></tr>
+                <tr><td colspan="2" class="options"><a href="edit-profile.jsp">Edit My Profile</a></td></tr>
+                <%} %>
             </table>
         </div>
         <jsp:include page="/footer.jsp"/>
