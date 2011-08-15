@@ -51,7 +51,8 @@
                 <tr><td class="left">Messages Posted</td><td><%=user.getMessages()%></td></tr>
                 <%if (userid == (Integer)session.getAttribute("userid")) { %>
                 <tr><th colspan="2">Options</th></tr>
-                <tr><td colspan="2" class="options"><a href="edit-profile.jsp">Edit My Profile</a></td></tr>
+                <tr><td colspan="2" class="options"><a href="edit-profile.jsp">Edit Profile</a></td></tr>
+                <tr><td colspan="2" class="options"><a href="change-password.jsp">Change Password</a></td></tr>
                 <%} %>
             </table>
         </div>

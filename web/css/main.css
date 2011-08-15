@@ -216,3 +216,7 @@ h2.center {
 #profile-table td.options {
     text-align: center;
 }
+
+#profile-table input, #profile-table #email {
+    border: 1px solid cornflowerblue;
+}
