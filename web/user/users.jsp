@@ -22,12 +22,14 @@
     <body>
         <jsp:include page="header.jsp"/>
         <div id='content'>
-            <h2>User List</h2>
+            <h2 class="center">User List</h2>
             <table id="user-list">
-                <tr><th>Username</th><th>Topics</th><th>Posts</th></tr>
+                <tr><th>Username</th><th>Registered</th><th>Last Action</th><th>Topics</th><th>Posts</th></tr>
                 <% for (UserVO user : users) { 
                 out.println("<tr>");
                 out.println("<td><a href='profile.jsp?userid=" + user.getUserid() + "'>" + user.getUsername() + "</a>");
+                out.println("<td>" + user.getRegistered() + "</td>");
+                out.println("<td>" + user.getLastAction() + "</td>");
                 out.println("<td>" + user.getTopics() + "</td>");
                 out.println("<td>" + user.getMessages() + "</td>");
                 out.println("</tr>");

@@ -220,3 +220,18 @@ h2.center {
 #profile-table input, #profile-table #email {
     border: 1px solid cornflowerblue;
 }
+
+#user-list {
+    width: 100%;
+}
+
+#user-list th {
+    font-weight: bold;
+    text-align: center;
+    background: #C4C4C4;
+}
+
+#user-list td {
+    background: #DFDFDF;
+    padding: 2px 10px;
+}

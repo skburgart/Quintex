@@ -15,6 +15,7 @@ public class UserVO {
     private String password;
     private String signature;
     private Timestamp registered;
+    private Timestamp lastAction;
     private String flags;
     private int topics;
     private int messages;
@@ -64,11 +65,19 @@ public class UserVO {
     }
 
     public String getRegistered() {
-        return new SimpleDateFormat("d/M/yyyy h:mma z").format(registered);
+        return new SimpleDateFormat("dd/MM/yyyy hh:mma z").format(registered);
     }
 
     public void setRegistered(Timestamp registered) {
         this.registered = registered;
+    }
+
+    public String getLastAction() {
+        return new SimpleDateFormat("dd/MM/yyyy hh:mma z").format(lastAction);
+    }
+
+    public void setLastAction(Timestamp lastAction) {
+        this.lastAction = lastAction;
     }
 
     public String getFlags() {

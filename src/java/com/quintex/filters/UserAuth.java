@@ -1,5 +1,6 @@
 package com.quintex.filters;
 
+import com.quintex.objects.UserDBO;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -42,11 +43,16 @@ public class UserAuth implements Filter {
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpSession session = httpReq.getSession(true);
 
-        if (session.getAttribute("username") == null) {
+        Object userid = session.getAttribute("userid");
+        
+        if (userid == null) {
             ((HttpServletResponse) response).sendRedirect("/Quintex/index.jsp");
             return;
         }
-
+        
+        UserDBO udbo = new UserDBO();
+        udbo.updateLastAction((Integer)userid);        
+        
 
         Throwable problem = null;
         try {

@@ -22,7 +22,7 @@ public class UserDBO extends DatabaseObject {
     }
 
     public int add(String username, String password, String email) {
-        String query = "INSERT INTO user(username, password, email, registered) VALUES (?, ?, ?, NOW())";
+        String query = "INSERT INTO user(username, password, email, lastaction) VALUES (?, ?, ?, NOW())";
         int result = 0;
 
         if (getFromUsername(username) == null) {
@@ -84,6 +84,12 @@ public class UserDBO extends DatabaseObject {
 
         return result;
     }
+    
+    public int updateLastAction(int userid) {
+        String query = "UPDATE user SET lastaction=NOW() WHERE userid=?";
+        
+        return update(query, userid);
+    }
 
     public int resetPassword(String username) {
         int result = 0;
@@ -131,7 +137,7 @@ public class UserDBO extends DatabaseObject {
 
     public void logLogin(int userid, String ip) {
 
-        String query = "INSERT INTO user_login_history(userid, ip, timestamp) VALUES (?, ?, NOW())";
+        String query = "INSERT INTO user_login_history(userid, ip) VALUES (?, ?)";
         update(query, userid, ip);
 
     }
@@ -175,6 +181,10 @@ public class UserDBO extends DatabaseObject {
                 }
                 try {
                     tmp.setRegistered(rs.getTimestamp("registered"));
+                } catch (Exception exp) {
+                }
+                try {
+                    tmp.setLastAction(rs.getTimestamp("lastaction"));
                 } catch (Exception exp) {
                 }
                 try {

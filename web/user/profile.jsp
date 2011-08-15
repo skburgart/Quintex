@@ -46,6 +46,7 @@
                 <tr><td class="left">Userid</td><td><%=user.getUserid()%></td></tr>
                 <tr><td class="left">Email</td><td><%=user.getEmail()%></td></tr>
                 <tr><td class="left">Registered</td><td><%=user.getRegistered()%></td></tr>
+                <tr><td class="left">Last Action</td><td><%=user.getLastAction()%></td></tr>
                 <tr><td class="left">Signature</td><td><%=user.getSignature()%></td></tr>
                 <tr><td class="left">Topics Created</td><td><%=user.getTopics()%></td></tr>
                 <tr><td class="left">Messages Posted</td><td><%=user.getMessages()%></td></tr>
