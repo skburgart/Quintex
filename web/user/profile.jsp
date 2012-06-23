@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="com.quintex.value.UserVO"%>
-<%@page import="com.quintex.objects.UserDBO"%>
+<%@page import="com.quintex.database.UserDBO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>    

@@ -1,8 +1,8 @@
 package com.quintex.ajax;
 
-import com.quintex.helpers.Logger;
-import com.quintex.helpers.Regex;
-import com.quintex.objects.UserDBO;
+import com.quintex.database.UserDBO;
+import com.quintex.utility.Logger;
+import com.quintex.utility.Regex;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,13 +1,8 @@
-package com.quintex.helpers;
+package com.quintex.utility;
 
 import java.util.Formatter;
 import java.util.Properties;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
@@ -16,23 +11,22 @@ import javax.mail.internet.MimeMessage;
  * @author Steven Burgart
  */
 public class Email {
-    
+
     private static final String SMTP_HOST_NAME = "smtp.gmail.com";
     private static final String SMTP_PORT = "465";
     private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
     private static final String FROM_EMAIL = "quintex.noreply@gmail.com";
-    
     private static final String RESET_SUBJECT = "Password Reset at Quintex";
     private static final String RESET_BODY = "Dear %s,\n\nYou have recently requested to reset your password at Quintex. \nYour new password is: %s\n\n- Quintex";
 
     public static void resetPassword(String email, String username, String newPassword) {
-        
+
         Formatter f = new Formatter();
         String body = f.format(RESET_BODY, username, newPassword).toString();
 
         send(email, RESET_SUBJECT, body);
     }
-    
+
     private static void send(String to, String subject, String message) {
         boolean debug = true;
 

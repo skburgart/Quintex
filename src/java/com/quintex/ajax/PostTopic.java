@@ -1,7 +1,7 @@
 package com.quintex.ajax;
 
-import com.quintex.helpers.Logger;
-import com.quintex.objects.TopicDBO;
+import com.quintex.database.TopicDBO;
+import com.quintex.utility.Logger;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -22,7 +22,7 @@ public class BoardVO {
     public void setBoardid(int boardid) {
         this.boardid = boardid;
     }
-    
+
     public Timestamp getTimestamp() {
         return timestamp;
     }

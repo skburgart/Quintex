@@ -1,16 +1,11 @@
 package com.quintex.filters;
 
-import com.quintex.objects.UserDBO;
+import com.quintex.database.UserDBO;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +27,7 @@ public class UserAuth implements Filter {
     public UserAuth() {
     }
 
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
@@ -44,27 +40,21 @@ public class UserAuth implements Filter {
         HttpSession session = httpReq.getSession(true);
 
         Object userid = session.getAttribute("userid");
-        
+
         if (userid == null) {
             ((HttpServletResponse) response).sendRedirect("/Quintex/index.jsp");
             return;
         }
-        
+
         UserDBO udbo = new UserDBO();
-        udbo.updateLastAction((Integer)userid);        
-        
+        udbo.updateLastAction((Integer) userid);
 
         Throwable problem = null;
         try {
             chain.doFilter(request, response);
         } catch (Throwable t) {
-            // If an exception is thrown somewhere down the filter chain,
-            // we still want to execute our after processing, and then
-            // rethrow the problem after that.
-            problem = t;
-            t.printStackTrace();
+            // Nothing
         }
-
 
         // If there was a problem, we want to rethrow it if it is
         // a known type, otherwise log it.
@@ -98,12 +88,14 @@ public class UserAuth implements Filter {
     /**
      * Destroy method for this filter
      */
+    @Override
     public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
+    @Override
     public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
@@ -121,7 +113,7 @@ public class UserAuth implements Filter {
         if (filterConfig == null) {
             return ("UserAuthFilter()");
         }
-        StringBuffer sb = new StringBuffer("UserAuthFilter(");
+        StringBuilder sb = new StringBuilder("UserAuthFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());

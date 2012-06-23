@@ -1,4 +1,4 @@
-package com.quintex.helpers;
+package com.quintex.utility;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

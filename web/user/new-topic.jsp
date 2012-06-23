@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="com.quintex.value.BoardVO"%>
-<%@page import="com.quintex.objects.BoardDBO"%>
+<%@page import="com.quintex.database.BoardDBO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>   

@@ -4,13 +4,13 @@
     Author     : steve
 --%>
 
-<%@page import="com.quintex.objects.MessageDBO"%>
+<%@page import="com.quintex.database.MessageDBO"%>
 <%@page import="com.quintex.value.BoardVO"%>
-<%@page import="com.quintex.objects.BoardDBO"%>
+<%@page import="com.quintex.database.BoardDBO"%>
 <%@page import="com.quintex.value.MessageVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.quintex.value.TopicVO"%>
-<%@page import="com.quintex.objects.TopicDBO"%>
+<%@page import="com.quintex.database.TopicDBO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

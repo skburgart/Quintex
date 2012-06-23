@@ -4,12 +4,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,7 +38,7 @@ public class AdminAuth implements Filter {
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpSession session = httpReq.getSession(true);
 
-        if (session.getAttribute("flags") == null || !((String)session.getAttribute("flags")).contains("a")) {
+        if (session.getAttribute("flags") == null || !((String) session.getAttribute("flags")).contains("a")) {
             ((HttpServletResponse) response).sendRedirect("/Quintex/user/index.jsp");
             return;
         }
@@ -53,11 +48,7 @@ public class AdminAuth implements Filter {
         try {
             chain.doFilter(request, response);
         } catch (Throwable t) {
-            // If an exception is thrown somewhere down the filter chain,
-            // we still want to execute our after processing, and then
-            // rethrow the problem after that.
-            problem = t;
-            t.printStackTrace();
+            // nothing
         }
 
         // If there was a problem, we want to rethrow it if it is
@@ -92,12 +83,14 @@ public class AdminAuth implements Filter {
     /**
      * Destroy method for this filter
      */
+    @Override
     public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
+    @Override
     public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
@@ -115,7 +108,7 @@ public class AdminAuth implements Filter {
         if (filterConfig == null) {
             return ("AdminAuth()");
         }
-        StringBuffer sb = new StringBuffer("AdminAuth(");
+        StringBuilder sb = new StringBuilder("AdminAuth(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());

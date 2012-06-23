@@ -1,4 +1,4 @@
-package com.quintex.helpers;
+package com.quintex.utility;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,12 +21,7 @@ public class Logger {
     }
 
     public static void logError(Exception exp) {
-        boolean stackTrace = true;
-
         log("ERROR: " + exp.getMessage());
 
-        if (stackTrace) {
-            exp.printStackTrace();
-        }
     }
 }

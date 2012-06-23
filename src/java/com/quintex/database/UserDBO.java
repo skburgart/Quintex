@@ -1,9 +1,9 @@
-package com.quintex.objects;
+package com.quintex.database;
 
+import com.quintex.utility.Email;
+import com.quintex.utility.Logger;
+import com.quintex.utility.SHA;
 import com.quintex.value.UserVO;
-import com.quintex.helpers.Email;
-import com.quintex.helpers.SHA;
-import com.quintex.helpers.Logger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class UserDBO extends DatabaseObject {
 
     public int add(String username, String password, String email) {
         String query = "INSERT INTO user(username, password, email, lastaction) VALUES (?, ?, ?, NOW())";
-        int result = 0;
+        int result;
 
         if (getFromUsername(username) == null) {
             result = update(query, username, SHA.getSHAOne(password), email);
@@ -47,12 +47,9 @@ public class UserDBO extends DatabaseObject {
     }
 
     public ArrayList<UserVO> getAll() {
-        ArrayList<UserVO> users = new ArrayList<UserVO>();
-
         String query = "SELECT *, (SELECT COUNT(*) FROM topic WHERE userid=u.userid) as topics, (SELECT COUNT(*) FROM message WHERE userid=u.userid) as messages FROM user AS u";
-        users = parseResultSet(select(query));
 
-        return users;
+        return parseResultSet(select(query));
     }
 
     public UserVO getFromUsername(String username) {
@@ -84,15 +81,15 @@ public class UserDBO extends DatabaseObject {
 
         return result;
     }
-    
+
     public int updateLastAction(int userid) {
         String query = "UPDATE user SET lastaction=NOW() WHERE userid=?";
-        
+
         return update(query, userid);
     }
 
     public int resetPassword(String username) {
-        int result = 0;
+        int result;
         String query = "UPDATE user SET password=? WHERE username=?";
         String newPassword = generatePassword();
 

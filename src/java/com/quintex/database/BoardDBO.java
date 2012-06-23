@@ -1,6 +1,6 @@
-package com.quintex.objects;
+package com.quintex.database;
 
-import com.quintex.helpers.Logger;
+import com.quintex.utility.Logger;
 import com.quintex.value.BoardVO;
 import java.sql.ResultSet;
 import java.sql.SQLException;

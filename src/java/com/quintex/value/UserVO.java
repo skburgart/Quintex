@@ -48,7 +48,7 @@ public class UserVO {
         if (signature == null) {
             return "";
         }
-        
+
         return signature;
     }
 

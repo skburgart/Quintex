@@ -1,4 +1,4 @@
-package com.quintex.helpers;
+package com.quintex.utility;
 
 import java.security.MessageDigest;
 import java.util.Formatter;
@@ -40,5 +40,4 @@ public class SHA {
         }
         return formatter.toString();
     }
-
 }
