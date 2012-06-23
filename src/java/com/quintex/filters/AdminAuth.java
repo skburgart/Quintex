@@ -31,6 +31,7 @@ public class AdminAuth implements Filter {
     public AdminAuth() {
     }
 
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
@@ -42,7 +43,7 @@ public class AdminAuth implements Filter {
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpSession session = httpReq.getSession(true);
 
-        if (!((String)session.getAttribute("flags")).contains("a")) {
+        if (session.getAttribute("flags") == null || !((String)session.getAttribute("flags")).contains("a")) {
             ((HttpServletResponse) response).sendRedirect("/Quintex/user/index.jsp");
             return;
         }
