@@ -156,46 +156,16 @@ public class UserDBO extends DatabaseObject {
             while (rs.next()) {
                 UserVO tmp = new UserVO();
 
-                try {
-                    tmp.setUserid(rs.getInt("userid"));
-                } catch (Exception exp) {
-                }
-                try {
-                    tmp.setUsername(rs.getString("username"));
-                } catch (Exception exp) {
-                }
-                try {
-                    tmp.setEmail(rs.getString("email"));
-                } catch (Exception exp) {
-                }
-                try {
-                    tmp.setPassword(rs.getString("password"));
-                } catch (Exception exp) {
-                }
-                try {
-                    tmp.setSignature(rs.getString("signature"));
-                } catch (Exception exp) {
-                }
-                try {
-                    tmp.setRegistered(rs.getTimestamp("registered"));
-                } catch (Exception exp) {
-                }
-                try {
-                    tmp.setLastAction(rs.getTimestamp("lastaction"));
-                } catch (Exception exp) {
-                }
-                try {
-                    tmp.setFlags(rs.getString("flags"));
-                } catch (Exception exp) {
-                }
-                try {
-                    tmp.setTopics(rs.getInt("topics"));
-                } catch (Exception exp) {
-                }
-                try {
-                    tmp.setMessages(rs.getInt("messages"));
-                } catch (Exception exp) {
-                }
+                tmp.setUserid(rs.getInt("userid"));
+                tmp.setUsername(rs.getString("username"));
+                tmp.setEmail(rs.getString("email"));
+                tmp.setPassword(rs.getString("password"));
+                tmp.setSignature(rs.getString("signature"));
+                tmp.setRegistered(rs.getTimestamp("registered"));
+                tmp.setLastAction(rs.getTimestamp("lastaction"));
+                tmp.setFlags(rs.getString("flags"));
+                tmp.setTopics(rs.getInt("topics"));
+                tmp.setMessages(rs.getInt("messages"));
 
                 users.add(tmp);
             }

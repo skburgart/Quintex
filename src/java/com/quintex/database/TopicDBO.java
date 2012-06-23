@@ -59,42 +59,17 @@ public class TopicDBO extends DatabaseObject {
         try {
             while (rs.next()) {
                 TopicVO topic = new TopicVO();
-                try {
-                    topic.setTopicid(rs.getInt("topicid"));
-                } catch (Exception exp) {
-                }
-                try {
-                    topic.setBoardid(rs.getInt("boardid"));
-                } catch (Exception exp) {
-                }
-                try {
-                    topic.setUserid(rs.getInt("userid"));
-                } catch (Exception exp) {
-                }
-                try {
-                    topic.setTitle(rs.getString("title"));
-                } catch (Exception exp) {
-                }
-                try {
-                    topic.setTimestamp(rs.getTimestamp("timestamp"));
-                } catch (Exception exp) {
-                }
-                try {
-                    topic.setLatest(rs.getTimestamp("latest"));
-                } catch (Exception exp) {
-                }
-                try {
-                    topic.setTitle(rs.getString("title"));
-                } catch (Exception exp) {
-                }
-                try {
-                    topic.setCreator(rs.getString("creator"));
-                } catch (Exception exp) {
-                }
-                try {
-                    topic.setMessages(rs.getInt("messages"));
-                } catch (Exception exp) {
-                }
+
+                topic.setTopicid(rs.getInt("topicid"));
+                topic.setBoardid(rs.getInt("boardid"));
+                topic.setUserid(rs.getInt("userid"));
+                topic.setTitle(rs.getString("title"));
+                topic.setTimestamp(rs.getTimestamp("timestamp"));
+                topic.setLatest(rs.getTimestamp("latest"));
+                topic.setTitle(rs.getString("title"));
+                topic.setCreator(rs.getString("creator"));
+                topic.setMessages(rs.getInt("messages"));
+                
                 topics.add(topic);
             }
         } catch (SQLException exp) {
