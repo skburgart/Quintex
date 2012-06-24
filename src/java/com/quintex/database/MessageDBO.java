@@ -34,7 +34,7 @@ public class MessageDBO extends DatabaseObject {
     }
 
     public int addWithTopic(int userid, String body) {
-        int topicid = aggregate("SELECT LAST_INSERT_ID()");
+        int topicid = singleInt("SELECT LAST_INSERT_ID()");
         String query = "INSERT INTO message(topicid, userid, body) VALUES(?, ?, ?)";
 
         if (update(query, topicid, userid, body) > 0) {

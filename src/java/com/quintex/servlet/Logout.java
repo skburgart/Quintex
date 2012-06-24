@@ -1,7 +1,5 @@
-package com.quintex.servlets;
+package com.quintex.servlet;
 
-import com.quintex.database.MessageDBO;
-import com.quintex.utility.Logger;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,48 +10,24 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author steve
+ * @author Steven Burgart
  */
-@WebServlet(name = "PostMessage", urlPatterns = {"/user/post-message"})
-public class PostMessage extends HttpServlet {
-    
+@WebServlet(name = "Logout", urlPatterns = {"/user/logout"})
+public class Logout extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Logger.log("Entering Post Message Servlet");
-        
-        MessageDBO mdbo = new MessageDBO();
-        int result = 0;
-        
-        HttpServletRequest httpReq = (HttpServletRequest) request;
-        HttpSession session = httpReq.getSession(true);
-        
-        try {
-            int userid = (Integer) session.getAttribute("userid");
-            int topicid = Integer.parseInt(request.getParameter("topicid"));
-            String message = request.getParameter("message");
-            
-            if (message != null
-                    && message.length() >= 5
-                    && message.length() <= 2048) {
-                result = mdbo.add(topicid, userid, message);
-            }
-            
-            if (result > 0) {
-                result = topicid;
-            }
-        } catch (NumberFormatException exp) {
-            
-        }
-        response.setContentType("text/xml");
-        response.setHeader("Cache-Control", "no-cache");
-        response.getWriter().write("<messageResponse>" + Integer.toString(result) + "</messageResponse>");
-        
+
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("/Quintex");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
+    /**
+     * Handles the HTTP
+     * <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -65,8 +39,10 @@ public class PostMessage extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
-     * Handles the HTTP <code>POST</code> method.
+    /**
+     * Handles the HTTP
+     * <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -78,8 +54,9 @@ public class PostMessage extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

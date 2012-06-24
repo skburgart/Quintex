@@ -1,4 +1,4 @@
-package com.quintex.filters;
+package com.quintex.filter;
 
 import java.io.IOException;
 import java.io.PrintStream;

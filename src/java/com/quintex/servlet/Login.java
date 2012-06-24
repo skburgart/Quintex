@@ -1,4 +1,4 @@
-package com.quintex.servlets;
+package com.quintex.servlet;
 
 import com.quintex.database.UserDBO;
 import com.quintex.utility.Logger;

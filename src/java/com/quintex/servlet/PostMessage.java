@@ -1,6 +1,6 @@
-package com.quintex.servlets;
+package com.quintex.servlet;
 
-import com.quintex.database.TopicDBO;
+import com.quintex.database.MessageDBO;
 import com.quintex.utility.Logger;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,42 +12,43 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Steven Burgart
+ * @author steve
  */
-@WebServlet(name = "PostTopic", urlPatterns = {"/user/post-topic"})
-public class PostTopic extends HttpServlet {
-
+@WebServlet(name = "PostMessage", urlPatterns = {"/user/post-message"})
+public class PostMessage extends HttpServlet {
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        Logger.log("Entering Post Topic Servlet");
-
-        TopicDBO tdbo = new TopicDBO();
+        
+        Logger.log("Entering Post Message Servlet");
+        
+        MessageDBO mdbo = new MessageDBO();
         int result = 0;
-
+        
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpSession session = httpReq.getSession(true);
-
+        
         try {
             int userid = (Integer) session.getAttribute("userid");
-            int boardid = Integer.parseInt(request.getParameter("boardid"));
-            String title = request.getParameter("title");
+            int topicid = Integer.parseInt(request.getParameter("topicid"));
             String message = request.getParameter("message");
-
-            if (title != null && message != null
-                    && title.length() >= 6
-                    && title.length() <= 64
+            
+            if (message != null
                     && message.length() >= 5
                     && message.length() <= 2048) {
-                result = tdbo.create(boardid, userid, title, message);
+                result = mdbo.add(topicid, userid, message);
+            }
+            
+            if (result > 0) {
+                result = topicid;
             }
         } catch (NumberFormatException exp) {
+            
         }
-
         response.setContentType("text/xml");
         response.setHeader("Cache-Control", "no-cache");
-        response.getWriter().write("<topicResponse>" + Integer.toString(result) + "</topicResponse>");
-
+        response.getWriter().write("<messageResponse>" + Integer.toString(result) + "</messageResponse>");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

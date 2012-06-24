@@ -1,4 +1,4 @@
-package com.quintex.filters;
+package com.quintex.filter;
 
 import com.quintex.database.UserDBO;
 import java.io.IOException;
