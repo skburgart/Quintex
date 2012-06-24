@@ -1,7 +1,8 @@
 <%--
     Document   : _template.jsp
     Created on : Jul 25, 2011, 10:56:16 PM
-    Author     : steve
+    Author     : Steven Burgart
+    Email      : skburgart@gmail.com
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,6 +1,7 @@
 <!--
-    Author     : Steven Burgart
     Created on : Jul 13, 2011
+    Author     : Steven Burgart
+    Email      : skburgart@gmail.com
 -->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

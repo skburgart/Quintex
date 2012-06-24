@@ -1,6 +1,7 @@
 <%--
     Document   : index.jsp
-    Author     : steve
+    Author     : Steven Burgart
+    Email      : skburgart@gmail.com
 --%>
 
 <%@page import="java.util.ArrayList"%>

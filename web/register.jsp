@@ -1,7 +1,8 @@
 <%--
     Document   : register
     Created on : Jul 25, 2011, 10:51:37 PM
-    Author     : steve
+    Author     : Steven Burgart
+    Email      : skburgart@gmail.com
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

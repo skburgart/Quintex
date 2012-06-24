@@ -1,7 +1,8 @@
 <%-- 
     Document   : profile
     Created on : Aug 4, 2011, 8:20:06 PM
-    Author     : steve
+    Author     : Steven Burgart
+    Email      : skburgart@gmail.com
 --%>
 
 <%@page import="com.quintex.value.UserVO"%>

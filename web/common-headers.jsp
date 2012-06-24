@@ -1,7 +1,8 @@
 <%--
     Document   : common-headers
     Created on : Jul 25, 2011, 10:53:49 PM
-    Author     : steve
+    Author     : Steven Burgart
+    Email      : skburgart@gmail.com
 --%>
 
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>

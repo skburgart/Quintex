@@ -1,6 +1,7 @@
 <%--
     Document   : edit-profile.jsp
-    Author     : steve
+    Author     : Steven Burgart
+    Email      : skburgart@gmail.com
 --%>
 
 <%@page import="com.quintex.value.UserVO"%>

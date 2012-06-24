@@ -1,7 +1,8 @@
 <%--
     Document   : footer
     Created on : Jul 25, 2011, 10:55:24 PM
-    Author     : steve
+    Author     : Steven Burgart
+    Email      : skburgart@gmail.com
 --%>
 
 <div id='footer'>

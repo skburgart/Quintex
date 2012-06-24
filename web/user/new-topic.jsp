@@ -1,7 +1,8 @@
 <%-- 
     Document   : new-topic
     Created on : Aug 4, 2011, 10:31:03 PM
-    Author     : steve
+    Author     : Steven Burgart
+    Email      : skburgart@gmail.com
 --%>
 
 <%@page import="com.quintex.value.BoardVO"%>

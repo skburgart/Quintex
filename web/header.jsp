@@ -1,7 +1,8 @@
 <%--
     Document   : header
     Created on : Jul 25, 2011, 10:52:55 PM
-    Author     : steve
+    Author     : Steven Burgart
+    Email      : skburgart@gmail.com
 --%>
 
 <div id='header'>
