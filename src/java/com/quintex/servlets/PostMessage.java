@@ -1,4 +1,4 @@
-package com.quintex.ajax;
+package com.quintex.servlets;
 
 import com.quintex.database.MessageDBO;
 import com.quintex.utility.Logger;
@@ -20,7 +20,7 @@ public class PostMessage extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Logger.log("Post Message Servlet");
+        Logger.log("Entering Post Message Servlet");
         
         MessageDBO mdbo = new MessageDBO();
         int result = 0;

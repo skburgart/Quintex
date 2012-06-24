@@ -1,4 +1,4 @@
-package com.quintex.ajax;
+package com.quintex.servlets;
 
 import com.quintex.database.TopicDBO;
 import com.quintex.utility.Logger;
@@ -20,7 +20,7 @@ public class PostTopic extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Logger.log("Post Topic Servlet");
+        Logger.log("Entering Post Topic Servlet");
 
         TopicDBO tdbo = new TopicDBO();
         int result = 0;

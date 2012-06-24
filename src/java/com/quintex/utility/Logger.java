@@ -23,5 +23,6 @@ public class Logger {
     public static void logError(Exception exp) {
         log("ERROR: " + exp.getMessage());
 
+        exp.printStackTrace();
     }
 }

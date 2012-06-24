@@ -60,16 +60,16 @@ public class TopicDBO extends DatabaseObject {
             while (rs.next()) {
                 TopicVO topic = new TopicVO();
 
-                topic.setTopicid(rs.getInt("topicid"));
-                topic.setBoardid(rs.getInt("boardid"));
-                topic.setUserid(rs.getInt("userid"));
-                topic.setTitle(rs.getString("title"));
-                topic.setTimestamp(rs.getTimestamp("timestamp"));
-                topic.setLatest(rs.getTimestamp("latest"));
-                topic.setTitle(rs.getString("title"));
-                topic.setCreator(rs.getString("creator"));
-                topic.setMessages(rs.getInt("messages"));
-                
+                try {topic.setTopicid(rs.getInt("topicid"));} catch (SQLException e) {}
+                try {topic.setBoardid(rs.getInt("boardid"));} catch (SQLException e) {}
+                try {topic.setUserid(rs.getInt("userid"));} catch (SQLException e) {}
+                try {topic.setTitle(rs.getString("title"));} catch (SQLException e) {}
+                try {topic.setTimestamp(rs.getTimestamp("timestamp"));} catch (SQLException e) {}
+                try {topic.setLatest(rs.getTimestamp("latest"));} catch (SQLException e) {}
+                try {topic.setTitle(rs.getString("title"));} catch (SQLException e) {}
+                try {topic.setCreator(rs.getString("creator"));} catch (SQLException e) {}
+                try {topic.setMessages(rs.getInt("messages"));} catch (SQLException e) {}
+
                 topics.add(topic);
             }
         } catch (SQLException exp) {

@@ -57,11 +57,11 @@ public class MessageDBO extends DatabaseObject {
             while (rs.next()) {
                 MessageVO message = new MessageVO();
 
-                message.setUserid(rs.getInt("userid"));
-                message.setTimestamp(rs.getTimestamp("timestamp"));
-                message.setBody(rs.getString("body"));
-                message.setUsername(rs.getString("username"));
-                
+                try {message.setUserid(rs.getInt("userid"));} catch (SQLException e) {}
+                try {message.setTimestamp(rs.getTimestamp("timestamp"));} catch (SQLException e) {}
+                try {message.setBody(rs.getString("body"));} catch (SQLException e) {}
+                try {message.setUsername(rs.getString("username"));} catch (SQLException e) {}
+
                 messages.add(message);
             }
         } catch (SQLException exp) {

@@ -156,16 +156,16 @@ public class UserDBO extends DatabaseObject {
             while (rs.next()) {
                 UserVO tmp = new UserVO();
 
-                tmp.setUserid(rs.getInt("userid"));
-                tmp.setUsername(rs.getString("username"));
-                tmp.setEmail(rs.getString("email"));
-                tmp.setPassword(rs.getString("password"));
-                tmp.setSignature(rs.getString("signature"));
-                tmp.setRegistered(rs.getTimestamp("registered"));
-                tmp.setLastAction(rs.getTimestamp("lastaction"));
-                tmp.setFlags(rs.getString("flags"));
-                tmp.setTopics(rs.getInt("topics"));
-                tmp.setMessages(rs.getInt("messages"));
+                try {tmp.setUserid(rs.getInt("userid"));} catch (SQLException e) {}
+                try {tmp.setUsername(rs.getString("username"));} catch (SQLException e) {}
+                try {tmp.setEmail(rs.getString("email"));} catch (SQLException e) {}
+                try {tmp.setPassword(rs.getString("password"));} catch (SQLException e) {}
+                try {tmp.setSignature(rs.getString("signature"));} catch (SQLException e) {}
+                try {tmp.setRegistered(rs.getTimestamp("registered"));} catch (SQLException e) {}
+                try {tmp.setLastAction(rs.getTimestamp("lastaction"));} catch (SQLException e) {}
+                try {tmp.setFlags(rs.getString("flags"));} catch (SQLException e) {}
+                try {tmp.setTopics(rs.getInt("topics"));} catch (SQLException e) {}
+                try {tmp.setMessages(rs.getInt("messages"));} catch (SQLException e) {}
 
                 users.add(tmp);
             }

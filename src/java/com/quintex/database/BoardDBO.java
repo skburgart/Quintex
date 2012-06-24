@@ -60,12 +60,12 @@ public class BoardDBO extends DatabaseObject {
             while (rs.next()) {
                 BoardVO board = new BoardVO();
 
-                board.setBoardid(rs.getInt("boardid"));
-                board.setTimestamp(rs.getTimestamp("timestamp"));
-                board.setTitle(rs.getString("title"));
-                board.setDescription(rs.getString("description"));
-                board.setTopics(rs.getInt("topics"));
-                board.setMessages(rs.getInt("messages"));
+                try {board.setBoardid(rs.getInt("boardid"));} catch (SQLException e) {}
+                try {board.setTimestamp(rs.getTimestamp("timestamp"));} catch (SQLException e) {}
+                try {board.setTitle(rs.getString("title"));} catch (SQLException e) {}
+                try {board.setDescription(rs.getString("description"));} catch (SQLException e) {}
+                try {board.setTopics(rs.getInt("topics"));} catch (SQLException e) {}
+                try {board.setMessages(rs.getInt("messages"));} catch (SQLException e) {}
 
                 boards.add(board);
             }

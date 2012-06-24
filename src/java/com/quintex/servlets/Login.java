@@ -1,49 +1,50 @@
-package com.quintex.ajax;
+package com.quintex.servlets;
 
 import com.quintex.database.UserDBO;
 import com.quintex.utility.Logger;
-import com.quintex.utility.Regex;
+import com.quintex.value.UserVO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Steven Burgart
  */
-@WebServlet(name = "UserRegisterServlet", urlPatterns = {"/register"})
-public class Register extends HttpServlet {
+@WebServlet(name = "UserLoginServlet", urlPatterns = {"/login"})
+public class Login extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Logger.log("Register Servlet");
+        HttpSession session = request.getSession(true);
+        Logger.log("Entering Login Servlet");
 
         UserDBO udbo = new UserDBO();
         int result = 0;
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String email = request.getParameter("email");
 
 
-        if (username != null
-                && password != null
-                && email != null
-                && password.length() >= 6
-                && username.length() <= 32
-                && username.length() >= 3
-                && Regex.match(Regex.email, email)
-                && Regex.match(Regex.username, username)) {
-            result = udbo.add(username, password, email);
-        } 
+        if (username != null && password != null) {
+            result = udbo.validate(username, password);
+            if (result == 1) {
+                UserVO user = udbo.getFromUsername(username);
+                udbo.logLogin(user.getUserid(), request.getRemoteAddr());
+                session.setAttribute("userid", user.getUserid());
+                session.setAttribute("username", user.getUsername());
+                session.setAttribute("flags", user.getFlags());
+            }
+        }
 
         response.setContentType("text/xml");
         response.setHeader("Cache-Control", "no-cache");
-        response.getWriter().write("<registerResponse>" + Integer.toString(result) + "</registerResponse>");
+        response.getWriter().write("<loginResponse>" + Integer.toString(result) + "</loginResponse>");
 
     }
 
