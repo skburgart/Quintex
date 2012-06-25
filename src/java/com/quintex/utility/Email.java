@@ -28,7 +28,6 @@ public class Email {
     }
 
     private static void send(String to, String subject, String message) {
-        boolean debug = true;
 
         Properties props = new Properties();
         props.put("mail.smtp.host", SMTP_HOST_NAME);

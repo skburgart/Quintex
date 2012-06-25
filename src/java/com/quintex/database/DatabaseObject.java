@@ -9,27 +9,27 @@ import java.sql.*;
  */
 public abstract class DatabaseObject {
 
+    protected Connection conn = null;
+
     class NoSuchDBSelectType extends Error {
 
         NoSuchDBSelectType(String type) {
             super(type);
         }
     }
-    protected Connection conn = null;
-    private static String dbUrl = "jdbc:mysql://localhost/quintex";
-    private static String dbUser = "quintex";
-    private static String dbPassword = "quintex123";
 
     protected DatabaseObject() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+            conn = DriverManager.getConnection(
+                    DBProperties.getProperty("dbUrl"),
+                    DBProperties.getProperty("dbUser"),
+                    DBProperties.getProperty("dbPassword"));
         } catch (Exception exp) {
             Logger.logError(exp);
         }
-
     }
-    
+
     protected DatabaseObject(Connection conn) {
         this.conn = conn;
     }
