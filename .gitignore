@@ -1,11 +1,3 @@
-*.war
-*.class
-*~
-*.lock
-*.DS_Store
-*.swp
-*.out
-build.xml
-/nbproject/
-/build/
-/dist/
+.gradle/
+build/
+
